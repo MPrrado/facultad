@@ -1,3 +1,5 @@
+%PUNTO1.
+
 progenitor(carlos,isabelII).
 progenitor(diana,isabelII).
 
@@ -61,8 +63,6 @@ bisAbueloDe(Persona, BisAbuelo) :- abuelo(X, Persona), progenitor(X,BisAbuelo), 
 bisAbuelaDe(Persona, BisAbuela) :- abuelo(X, Persona), progenitor(X,BisAbuela), femenino(BisAbuela). 
 
 
-
-
 /*
     b)
 
@@ -83,3 +83,5 @@ bisAbuelaDe(Persona, BisAbuela) :- abuelo(X, Persona), progenitor(X,BisAbuela), 
 
 
 */
+
+
