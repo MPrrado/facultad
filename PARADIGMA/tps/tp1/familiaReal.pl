@@ -39,7 +39,6 @@ masculino(harry).
 masculino(george).
 masculino(louis).
 masculino(archie).
-masculino(lilibet).
 
 
 abuelos(A,N):- progenitor(N,X), progenitor(X,A).
@@ -52,7 +51,14 @@ hija(Padre,X) :- progenitor(X, Padre), femenino(X).
 
 hermanos(Persona,H) :- padreDe(X, Persona), madreDe(Y,Persona),padreDe(X, H), madreDe(Y,H), H\=Persona.
 
-primo(Chabon, Primo) :- progenitor(Chabon,X), hermanos(X,Y), progenitor(Primo,Y).
+primo(Chabon, Primo) :- progenitor(Chabon,X), hermanos(X,Y), progenitor(Primo,Y), masculino(Primo).
+prima(Chabon, Prima) :- progenitor(Chabon,X), hermanos(X,Y), progenitor(Prima,Y), femenino(Prima).
+
+tio(Persona,Tio) :- primo(Persona, X), progenitor(X,Tio), masculino(Tio).
+tia(Persona,Tia) :- primo(Persona, X), progenitor(X,Tia), femenino(Tia).
+
+bisAbueloDe(Persona, BisAbuelo) :- abuelo(X, Persona), progenitor(X,BisAbuelo), masculino(BisAbuelo). 
+bisAbuelaDe(Persona, BisAbuela) :- abuelo(X, Persona), progenitor(X,BisAbuela), femenino(BisAbuela). 
 
 
 
