@@ -49,6 +49,18 @@ precio(nugaton, 51).
 productosConValorMayor(Valor, X):-producto(bebida,X), precio(X,Y), Y>Valor.
 
 /*productos que entran en promo semanal. Regla*/
-promoSemanal(Producto1, Producto2):- ((precio(Producto1,X), X>100); (precio(Producto2,Y), Y>100)) , (producto(Cate1, Producto1) , producto(Cate2, Producto2), Cate1 \= Cate2).
+promoSemanal(Producto1, Producto2) :-
+    precio(Producto1, X),
+    precio(Producto2, Y),
+    ((X > 100; Y > 100)), % me tengo que asegurar que los valores esten inicializados antes de ser operados, es decir primero evaluo los precios para poder preguntar sobre su valor y ademas operar mas abajo a la hora de hacer la regla "is"
+    producto(Cate1, Producto1),
+    producto(Cate2, Producto2),
+    Cate1 \= Cate2,
+    write('Precio '), write(Producto1), write(': '), write(X), nl,
+    write('Precio '), write(Producto2), write(': '), write(Y), nl,
+    Descuento is Y * 0.3,
+    write('Precio '), write(Producto2), write(' con descuento (70%): '), write(Descuento), nl.
+
+
 
 po(Producto1):-(precio(Producto1,X), X>100).
