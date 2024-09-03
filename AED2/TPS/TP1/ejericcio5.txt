@@ -31,3 +31,23 @@ escribir d      WRITE 5
 
 //b)
 
+P0.     READ 1 a
+P1.     LOAD 1
+P2.     STORE 2
+P3.     LOAD 1
+P4.     STORE 3
+P5.     LOAD 1
+P6.     DIV =2
+P7.     MULT =2
+P8.     STORE 4
+P9.     LOAD 2
+P10.    SUB 3
+P11.    JZERO "resto_cero"
+P12.    LOAD 3
+P13.    JGTZ P0
+P14.    HALT
+
+resto_cero      P0.     LOAD 4
+                P1.     ADD =1
+                P2.     STORE 4
+                
