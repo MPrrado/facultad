@@ -123,10 +123,51 @@ contarVocalesPM f cc = if f (head cc) then 1 + contarVocalesPM f (tail cc) else 
 
 --list comprehension
 
--- como seria?
+-- como seria? a veces se complica, no es necesario 
 
 --h)
 
+-- pattern matching
+transformar f [] = []
+transformar f (x:xs) = f x : transformar f xs
+
+
+--i)
+
 --guards
+tablaDel5 n 
+    | n<=0 = []
+    | otherwise = [x | x <- [0..n],  mod x 5 == 0]
 
+--j)
+paresOrdenados = [(x,y) | x <- [0,2..], y <- [1,3..5], x < y]
 
+--k)
+verificar p xs
+    | null xs = True
+    | otherwise = p (head xs) && verificar p (tail xs)
+
+--l)
+
+cuadrado x 0 = 1
+cuadrado 0 y = 0
+cuadrado x y = x^y 
+
+combinar f xs ys
+    | null xs = []
+    | null ys = []
+    | otherwise = f (head xs) (head ys) : combinar f (tail xs) (tail ys)
+--m)
+
+--guards
+filtrarListaG p xs
+    | null xs = []
+    | p (head xs) = head xs : filtrarListaG p (tail xs)
+    | otherwise = filtrarListaG p (tail xs)
+
+--pattern matching
+filtrarListaPM p [] = []
+filtrarListaPM p xs = if p (head xs) == True then xs else filtrarListaPM p (tail xs)
+
+--list comprehension
+filtrarListaLC p xs = [x | x <- xs, p x == True]
