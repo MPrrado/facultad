@@ -167,7 +167,8 @@ filtrarListaG p xs
 
 --pattern matching
 filtrarListaPM p [] = []
-filtrarListaPM p xs = if p (head xs) == True then xs else filtrarListaPM p (tail xs)
+-- filtrarListaPM p xs = if p (head xs) == True then (head xs): filtrarListaPM p (tail xs) else filtrarListaPM p (tail xs)
+filtrarListaPM p (x:xs) = if (p x) == True then x : filtrarListaPM p xs else filtrarListaPM p xs
 
 --list comprehension
 filtrarListaLC p xs = [x | x <- xs, p x == True]
