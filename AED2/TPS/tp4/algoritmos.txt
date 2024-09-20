@@ -32,7 +32,7 @@ FUNCION encontrarMaximo(v,inicio,fin): arreglo enteros X entero >=0 X entero >=0
     SI (v[medio-1] < v[medio] > v[medio+1]) ENTONCES //ordenado de manera ascendente y despues descendente
         RETORNA v[medio]
     SINO
-        SI (v[medio-1] < v[medio] < v[medio+1]) ENTONCES
+        SI (v[medio-1] < v[medio] ) ENTONCES
             RETORNA encontrarMaximo(v, medio, fin)
         SINO
             RETORNA encontrarMaximo(v, inicio, medio)
