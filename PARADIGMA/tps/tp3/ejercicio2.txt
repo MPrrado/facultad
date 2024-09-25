@@ -7,7 +7,7 @@ Las clases que intervienen en el problema son:
     metodos: CrearAlquiler():Alquiler, 
 
 -Alquiler:
-    atributos: fechaEfectua:Date, cliente:Cliente, vehiculoAlquilado:Vehiculo
+    atributos: fechaEfectua:Date, cliente: string, vehiculoAlquilado:Vehiculo
     
 
 -Vehiculo (clase padre): 
@@ -18,8 +18,7 @@ Las clases que intervienen en el problema son:
         -Camioneta(subclase): 
             atributos:
                 es4x4:bool
--Cliente:
-    -atributos: nombre: string, apellido: string, dni:int
+
 //b)
 
 Entre la clase "Sucursal" y "Alquiler" existe una relacion de COMPOSICION
