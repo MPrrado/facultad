@@ -1,0 +1,7 @@
+sistema de inscripcion a comisiones de asignaturas del dpto ciencias de la computacion.
+
+La opcion B es la correcta por lo siguiente:
+-   En cuanto a las clases vemos que cada una tienen sus atributos y metodos correspondientes.
+-   Respecto a las relaciones entre ellas vemos que la clase Comision se relaciona con la clase Asignatura a traves de composicion lo cual tiene sentido pues no puede existir comsion sin un asginatura a la cual asignarla.
+-   Por otra parte la clase Alumno se relaciona con la clase Comision a traves de una relacion de agregacion, pues un objeto del tipo Alumno puede existir sin necesidad de que exista un objeto del tipo Comision. 
+-   Por ultimo tenemos tambien la generalizacion del tipo de alumno, es decir la condicion con la que cuenta el alumno para inscribirse en la comision de determinada asignatura. Esta generalizacion se relaciona con el alumno a traves de una agregacion tambien, pues no es necesario que exista un alumno para que haya tipos de estos, es decir los diferentes tipos pueden existir sin la necesadidad de alumnos.

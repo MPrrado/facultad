@@ -1,0 +1,21 @@
+//EJERCICIO 4
+// A)
+
+PRODUCTO (generalizacion) : 
+    ATRIBUTOS:  codigoProd: int, descripcion: string, precioBase: float
+    METODOS: mostrarInfo(), getCodigo(): int, ObtenerPrecioFinal():float
+        CLASES HIJAS:
+            ProductoLimpieza:
+                ATRIBUTOS:  esToxico: bool
+                METODOS:    EsToxico(): bool, ObtenerPrecioFinal(): float
+            PoductoAlimenticio:
+                ATRIBUTOS:  mesVencimiento: Date, añoVencimiento: Date, aptoParaCeliaco: bool, 
+                METODOS:    getDescripcion(): string, EstaVencido(): bool, EsAptoParaCeliacos(): bool
+        
+ALMACEN:
+    ATRIBUTOS:  listaVentas: List<Venta>
+    METODOS:    crearVenta(): Venta, ObtenerMontoDelMes(): float
+
+VENTA:
+    ATRIBUTOS:  codigoVenta: int, fechaRealizacion: Date, productosVendidos: List<Producto>
+    METODOS:    mostrarInfoVenta(), getMontoTotal(): float
