@@ -19,3 +19,19 @@ ALMACEN:
 VENTA:
     ATRIBUTOS:  codigoVenta: int, fechaRealizacion: Date, productosVendidos: List<Producto>
     METODOS:    mostrarInfoVenta(), getMontoTotal(): float
+
+//B)
+
+EMPLEADO:
+    ATRIBUTOS:  nombreCompleto: int, dni: int, domicilio:string, horasTrabajo: int, antiguedad: int, cantidadHijos: int, esCasado: bool
+    METODOS: GetInformacion(), EsCasado():bool, GetCantidaHijos(): int, GetSalario(): float
+
+CATEGORIA(generalizacion):
+    ATRIBUTOS:  const PRECIO_HORA = 200
+    METODOS:  
+        PLANTA_PERMANENTE:
+            ATRIBUTOS: const SALARIO_FAMILIAR = 1000, const SALARIO_MATRIMONIO = 1500
+            METODOS: GetSalario(antiguedad,horasTrabajo,cantidadHijos): float
+        PLATNA_TRANSITORIA:
+            ATRIBUTOS: const MONTO_FIJO_TRANSITORIA = 7000
+            METODOS:  GetSalario(horasTrabajos): float
