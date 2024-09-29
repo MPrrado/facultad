@@ -20,7 +20,7 @@ VENTA:
     ATRIBUTOS:  codigoVenta: int, fechaRealizacion: Date, productosVendidos: List<Producto>
     METODOS:    mostrarInfoVenta(), getMontoTotal(): float
 
-//B)
+//B) no lo implemente tan como esta aqui. Faltaria preguntar, sino no hay problema
 
 EMPLEADO:
     ATRIBUTOS:  nombreCompleto: int, dni: int, domicilio:string, horasTrabajo: int, antiguedad: int, cantidadHijos: int, esCasado: bool
@@ -35,3 +35,38 @@ CATEGORIA(generalizacion):
         PLATNA_TRANSITORIA:
             ATRIBUTOS: const MONTO_FIJO_TRANSITORIA = 7000
             METODOS:  GetSalario(horasTrabajos): float
+
+//C) 
+
+SERIE:
+    ATRIBUTOS:  titulo: string, añoInicio: Date, sinopsis: string, genero: string, listaPersonajes: List<Personaje>, listaTemporadas: List<Temporada>
+    METODOS:    GetInformacion(), GetNumeroTemporadas(), GetListaCapitulosSegunTemporada(int nroTemporada):List<Capitulo>, GetCapitulosSegunDirector(nombreDirector): list<Capitulo>;
+
+TEMPORADA:
+    ATRIBUTOS:  fechaProduccion: Date, fechaEstrenoMundial: Date, listaCapitulos: List<Capitulo>
+    METODOS:
+
+CAPITULO:
+    ATRIBUTOS:  titulo: string, director: string, duracion: Time, sinopsis: string.
+    METODOS: 
+
+PERSONAJE:
+    ATRIBUTOS:  nombreActor: string, nombrePersonaje: string
+    METODOS:    
+
+
+//D)
+
+PEDIDO:
+    ATRIBUTOS:  codigoPedido: int, fechaRealizacion: Date, listaElementos: List<Elementos>
+    METODOS:    GetPrecioPedido():float, GetInformacionPedido(), GetPedidoSegunFecha(fecha)
+
+ELEMENTOS (generalizacion)
+    ATRIBUTOS:  codigo: int, descripcion: string, precioBase: float
+    METODOS:    GetPrecio():float, GetInformacion()
+        PLATILLO: 
+            ATRIBUTOS:  listaIngredientesExtras: List<Ingrediente>
+            METODOS: GetPrecio():float, GetInformacion()
+        BEBIDA:
+            ATRIBUTOS:  capacidad: int
+            METODOS: GetPrecio():float
