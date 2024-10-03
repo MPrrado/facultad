@@ -15,7 +15,7 @@ void Pelicula :: ListarInformacion()
     {
         
         cout <<"la pelicula es nacional"<<endl;
-    }else if(this->tipoPelicula == 'I')
+    }else if(this->tipoPelicula == (TipoPelicula) Internacional)
     {
 
         cout <<"la pelicula es internacional"<<endl;

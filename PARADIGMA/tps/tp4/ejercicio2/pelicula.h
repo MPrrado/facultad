@@ -2,6 +2,11 @@
 #include <string>
 using namespace std;
 
+enum TipoPelicula
+{
+    Nacional = 'N',
+    Internacional = 'I'
+};
 class Pelicula
 {
     static int autonumerico;
@@ -10,7 +15,7 @@ class Pelicula
     string director;
     bool estreno;
     float precioBase;
-    char tipoPelicula; // N o I nacional o internacional
+    TipoPelicula tipoPelicula; // N o I nacional o internacional
     
     public:
         void ListarInformacion();
