@@ -1,0 +1,62 @@
+
+Invococin al constructor por defecto
+Const x defecto: 0x5ffe70
+(Fin constructor por defecto)
+
+   1 Resumen
+      - Creados: 1
+      - Destruidos: 0
+
+Invocacin al constructor copia
+Const copia: 0x5ffe68
+(Fin constructor copia)
+
+   2 Resumen
+      - Creados: 2
+      - Destruidos: 0
+
+Invocacin al constructor por defecto a travs del operador NEW
+Const x defecto: 0x51b15f0
+(Fin constructor por defecto)
+
+   3 Resumen
+      - Creados: 3
+      - Destruidos: 0
+
+Invocacin a la funcin miembro metodo1
+(Fin metodo1)
+
+   4 Resumen
+      - Creados: 3
+      - Destruidos: 0
+
+Invocacin a la funcin miembro metodo2
+Const copia: 0x5ffe80
+Const copia: 0x5ffe78
+Destructor: 0x5ffe78
+Destructor: 0x5ffe80
+(Fin metodo2)
+
+   5 Resumen
+      - Creados: 5
+      - Destruidos: 2
+
+Destructor: 0x5ffe68
+
+   6 Resumen
+      - Creados: 5
+      - Destruidos: 3
+
+Destructor: 0x5ffe70
+
+primero se crea el objeto 1 cuya direccion es: 0x5ffe70
+Luego se genera un scope con las llaves {} y adentro continua de la siguiente forma
+genera a traves del constructor copia otro objeto cuya direccion es: 0x5ffe68
+genera otro objeto a traves del operador new el cual tiene direccion: 0x51b15f0
+Luego se llama al metodo1 a traves del objeto2 dandole de parametro el objeto1, aqui no se crea ni se destruye nada pues el metodo devuelve una referencia y recibe una referencia
+A continuacion se llama al metodo2 a traves del objeto3 y como parametro el objeto1, como el metodo recibe un objeto crea una copia y lo asigna a la variable del parametro y luego crea otro y lo copia en objeto1 para el retorno, finalizado el metodo2 se destruyen los dos objetos creado.
+Finaliza el scope de la llaves y se destruye automaticamente el objeto2 creado por copia
+Luego finaliza el programa y se destruye el objeto1 creado en el scope del main.
+
+c) 
+Si, si existe el objeto3 el cual fue creado con el operador New que no fue destruido. Esto se debe a que es un objeto creado a traves de reserva dinamica de memoria y cuando se trabaja con esto tenemos que liberar y llamar al Destructor manualmente.

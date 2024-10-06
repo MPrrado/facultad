@@ -18,6 +18,9 @@ class Pelicula
     TipoPelicula tipoPelicula; // N o I nacional o internacional
     
     public:
+        Pelicula();
+        Pelicula(int codigo, string titulo, string director, bool estreno, float precioBase, TipoPelicula tipoPelicula);
+        Pelicula(const Pelicula &); //siempre tiene que ser const? por qué?
         void ListarInformacion();
         float CalcularCosto();
 };
