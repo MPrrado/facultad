@@ -50,21 +50,21 @@ Candidatos: arreglo con distancias entre estaciones de servicios desde el punto 
 conjunto solucion: numero de paradas
 Funcion factible: si la distancia hasta la proxima estacion es menor que la autonomia restante
 Funcion seleccion: selecciona la estacion mas lejana sin quedarse sin autonomia
-Funcion solucion: llego al destino?
+Funcion solucion: conjunto de estaciones de servicio donde paró a cargar combustible
 
 FUNCION cargaCombustible (V,c,n): vector entero > 0 X entero > 0 X entero > 0 -> arreglo entero [0,1]
     auxN <- n
-    i <- 1
+    i <- 1 // con esto indico que arranco con el tanque lleno
     PARA k = 1 HASTA c HACER
         estacionesCargo[k] <- 0 
-    MIENTRAS ( i < c) ^ (n > V[i]) HACER
+    MIENTRAS ( i < c) ^ (auxN < V[i]) HACER
         SI (auxN >= V[i])
             auxN <- auxN - V[i]
         SINO
             estacionesCargo[i-1] <- 1
-            auxN <- n // hay que restar de nuevo la distancia pues en la linea anterior digo que cargo en la estacion anterior (falta cambiar)
+            auxN <- auxN - V[i] 
         i <- i + 1
-    SI (n < V[i]) ENTONCES
+    SI (auxN < V[i]) ENTONCES
         RETORNA NULO
     SINO
         RETORNA estacionesCargo
