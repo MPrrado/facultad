@@ -68,3 +68,32 @@ FUNCION cargaCombustible (V,c,n): vector entero > 0 X entero > 0 X entero > 0 ->
         RETORNA NULO
     SINO
         RETORNA estacionesCargo
+
+costo algoritmico:  O(n)
+
+
+//EJERCICIO 3)
+
+Funcion objetivo: maximizar el numero de actividades a realizar, realizando una por vez
+
+Candidatos: matriz de 2xn con tareas para realizar con horas de inicio y fin (ordenada de menor a mayor por hora de fin)
+conjunto solucion: conjunto de actividades a realizar
+
+Funcion factible: si la proxima tarea empieza despues de terminar la que se eligio antes
+Funcion seleccion: selecciona las tareas que terminan antes pero comienzan despues de terminar la actual
+Funcion solucion: no hay mas tareas que terminen antes que no se crucen con las actuales
+
+FUNCION planificacionTareas(n,matriz(*)): entero > 0 x matriz de enteros > 0 -> arreglo enteros [0,1]
+    i <- 2
+    j <- 2
+    tareas[1] = 1
+    PARA k = 2 HASTA n HACER
+        tareas[k] <- 0
+    MIENTRAS (j < n) HACER
+        SI(matriz[i][j-1] < matriz[i-1][j]) ENTONCES //comparo las horas de inicio de la anterior tarea para ver si no estaré ocupado
+            tareas[j] = 1
+        j <- j + 1
+    RETORNA tareas
+FIN_FUNCION
+
+(*) la matriz esta ordenada de forma creciente respecto a la hora de fin de las tareas
