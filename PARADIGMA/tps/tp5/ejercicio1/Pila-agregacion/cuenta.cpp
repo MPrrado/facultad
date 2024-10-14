@@ -38,8 +38,3 @@ void Cuenta::MostrarInformacion()
     cout <<"DNI titular: "<<this->dniTitular<<endl;
     cout <<"Saldo cuenta: $ "<<this->saldo<<endl;
 };
-
-// Cuenta :: ~Cuenta()
-// {
-    
-// } 

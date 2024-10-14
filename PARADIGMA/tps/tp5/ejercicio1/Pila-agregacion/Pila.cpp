@@ -43,7 +43,7 @@ bool Pila:: esPilavacia(){
 }
 
 void Pila::escribir(){
-	cout << endl<<" PILA INT: (implementaci�n Pila de int)" << endl;
+	cout << endl<<" PILA INT: (implementacion Pila de int)" << endl;
 	for(int i=tope; i>=0;i-- ){
 		cout <<"     "<< arreglo[i]<<endl;
 	}
