@@ -15,4 +15,13 @@ contarMayoresPM (x:xs) n = if x > n then 1 + contarMayoresPM xs n else contarMay
 
 contarMayoresLC xs n = sum [1 | x<-xs, x > n]
 
+subListaPM [] n = []
+subListaPM (x:xs) n = if n>0 then x: subListaPM xs (n-1) else subListaPM xs n
 
+
+sonIgualesG xs1 xs2
+    | null xs1 && null xs2 = True
+    | null xs1 || null xs2 = False
+    | otherwise =  sonIgualesG (tail xs1) (tail xs2)
+
+intersecciónLC xs1 xs2 = [z | z <-xs1, y<- xs2, z == y]
