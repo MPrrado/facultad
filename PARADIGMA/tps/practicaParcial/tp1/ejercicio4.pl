@@ -28,18 +28,12 @@ i. Crear una lista con los n primeros números enteros.
 
 */
 
-listaNEnteros(0,[]).
-listaNEnteros(N,L):-
+listaNEnteros2(_, [], []).
+listaNEnteros2(0, _, []).
+listaNEnteros2(N, [H|T], [H|L]):-
     N > 0,
-    N1 is N-1,
-    listaNEnteros(N1, L1),
-    append(L1, [N1], L). % lo arma de manera creciente, este me parece mas adecuado
-
-listaNEnteros2(0, []).
-listaNEnteros2(N, [H|T]):-
-    N > 0,
-    H is N - 1,
-    listaNEnteros2(H, T). % lo arma al reves, es decir de manera decreciente
+    N1 is N - 1,
+    listaNEnteros2(N1, T, L). 
 
 /*
 iii. Determinar si los elementos de la lista están ordenados de menor a mayor. 

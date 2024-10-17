@@ -25,3 +25,8 @@ sonIgualesG xs1 xs2
     | otherwise =  sonIgualesG (tail xs1) (tail xs2)
 
 intersecciónLC xs1 xs2 = [z | z <-xs1, y<- xs2, z == y]
+
+esVocal c
+    |c `elem` ['a','e','i','o','u'] = True
+    |c `elem` ['A','E','I','O','U'] = True
+    |otherwise = False
