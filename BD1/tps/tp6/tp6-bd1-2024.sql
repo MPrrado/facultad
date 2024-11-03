@@ -60,5 +60,36 @@ INNER JOIN socio s ON p.id_persona = s.id_socio
 INNER JOIN venta v USING (id_socio)
 WHERE fecha BETWEEN '2021-01-01' AND '2021-12-31';
 
+/*l*/
+SELECT titulo, duracion_paginas, anio, precio FROM articulo
+INNER JOIN genero USING (id_genero)
+WHERE genero LIKE "%novela%";
 
+/*m*/
+SELECT nombre, dni, domicilio FROM persona p
+WHERE nombre LIKE "%Carlos%";
 
+/*n*/
+SELECT nombre, sueldo, funcion FROM persona p
+INNER JOIN empleado e ON p.id_persona = e.id_empleado
+INNER JOIN funcion f ON e.id_funcion = f.id_funcion
+WHERE sueldo > 125000
+ORDER BY sueldo DESC, nombre; /*no entiendo como ordenarlo de manera alfabetica sin que afecte el ordenamiento por sueldo*/
+
+/*o*/
+SELECT id_editorial, editorial, origen FROM editorial
+INNER JOIN articulo USING (id_editorial)
+INNER JOIN origen USING (id_origen)
+WHERE tipo = "editorial" AND origen <> "Argentina" AND origen <>"España";
+
+/*p*/
+
+SELECT membresia, precio, precio*1.25 AS precioConIncremento FROM membresia;
+
+/*q*/
+SELECT id_socio, nombre, fin_prestamo, multa FROM socio s
+INNER JOIN prestamo USING(id_socio)
+INNER JOIN persona p ON s.id_socio = p.id_persona
+WHERE multa 
+ORDER BY fin_prestamo, multa DESC;
+SELECT * from prestamo;
