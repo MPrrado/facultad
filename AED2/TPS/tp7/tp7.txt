@@ -1,0 +1,29 @@
+//ejercicio 2
+
+FUNCION ExpresionAritmeticaM(i, M, V, R): entero>0 X entero X vector de nat  X entero -> booleano
+    //globales n, i = 2, O (vector de operadores inicializado en vacio), m = n-1 
+    SI i = n ENTONCES
+        SI R = M ENTONCES
+            EscribirExpresion(V, O);
+            RETORNA VERDADERO
+        SINO
+            RETORNA FALSO
+    SINO
+        O[i-1] <- +
+        suma <-ExpresionAritmeticaM(i+1, M, V, R+V[i]) 
+        O[i-1] <- -
+        resta <- ExpresionAritmeticaM(i+1, M, V, R-V[i])
+        RETORNA  suma OR resta
+FIN_FUNCION
+
+FUNCION EscribirExpresion(V, O): vector de nat X vector operadores
+    ESCRIBIR(V[i-1])
+    PARA i HASTA n HACER
+        ESCRIBIR(O[i-1],V[i])
+FIN_FUNCION
+
+
+        
+
+
+    
