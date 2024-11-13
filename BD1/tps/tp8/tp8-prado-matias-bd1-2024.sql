@@ -1,6 +1,6 @@
 /*EJERCICIO 1*/
 /*a)*/
-SELECT e.id_empleado, p.nombre, f.nombre, parentesco FROM persona p
+SELECT e.id_empleado, p.nombre, f.nombre AS nombreFamiiar, parentesco FROM persona p
 INNER JOIN empleado e ON  p.id_persona = e.id_empleado
 LEFT JOIN familiar f USING(id_empleado);
 
@@ -52,6 +52,42 @@ DELETE FROM envio WHERE envio = "Aerobox";
 DELETE FROM ciudad WHERE ciudad IN("Casabindo", "La Toma", "San Jose de Feliciano");
 
 /*e*/
+start transaction;
+DELETE FROM detalle_venta
+WHERE id_venta = 1656;
+DELETE FROM venta
+WHERE fecha = '2020-09-18';
+rollback;
+
+
+/*f*/
+start transaction;
+DELETE prestamo FROM prestamo
+-- select * from prestamo
+INNER JOIN socio USING (id_socio)
+INNER JOIN ciudad USING (id_ciudad)
+INNER JOIN provincia USING(id_provincia)
+where fin_prestamo between '2020-11-01' and '2021-01-31' AND provincia = 'San Luis' AND multa IS NOT NULL;
+rollback;
+
+/*g*/
+start transaction;
+UPDATE empleado SET sueldo = sueldo * 1.1
+-- SELECT * from empleado
+WHERE sueldo < 100000;
+
+UPDATE empleado SET sueldo = sueldo * 1.2
+-- SELECT * from empleado
+WHERE sueldo > 100000;
+rollback;
+
+/*h*/
+start transaction;
+-- select * from venta
+UPDATE venta SET entregado = 'devuelto' 
+WHERE entregado = 'devuelto';
+rollback;
+
 
 select * from socio
 inner join ciudad using (id_ciudad)

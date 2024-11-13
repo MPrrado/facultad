@@ -1,0 +1,76 @@
+ejercicio 1)
+FUNCION EstimacionPi(radio, nroDardosTirados, ladoCuadrado): entero X entero -> real
+    k <- 0      
+    PARA i = 1 HASTA nroDardosTirados HACER
+        x <- uniforme(-ladoCuadrado/2, ladoCuadrado/2)
+        y <- uniforme(-ladoCuadrado/2, ladoCuadrado/2)
+        SI cumpleEcCircunferencia(radio,x,y) ENTONCES
+        k <- k+1
+    FIN_PARA
+    pi <- (ladoCuadrado^2 * k)/(radio^2 * n);
+FIN_FUNCION
+
+FUNCION cumpleEcCircunferencia(radio,x,y): entero x entero -> booleano
+    SI ((x^2+y^2) <= radio^2) ENTONCES
+        RETORNA VERDADERO
+    SINO
+        RETORNA FALSO
+FIN_FUNCION
+
+ejercicio 2)
+FUNCION compararProbabilista(vector1, vector2, izq, der, nroComparaciones): arreglo X arreglo X entero X entero -> booleano
+    sonIguales <- VERDADERO
+    MIENTRAS nroComparaciones > 0 ^ sonIguales <> FALSO
+        i <- uniforme(izq, der)
+        SI (vector1[i] <> vector2[i]) ENTONCES
+            sonIguales <- FALSO
+        nroComparaciones <- nroComparaciones-1
+FIN_FUNCION
+
+b) 
+
+i) Se generan √n números aleatorios entre los límites del arreglo, sin repetición. 
+Con este nroComparaciones el algoritmo pertenece a la categoria Monte Carlo
+
+ii) Se generan n números aleatorios entre los límites del arreglo, con repetición. 
+Con este nroComparaciones el algoritmo pertenece a la categoria Monte Carlo
+
+iii) Se generan n números aleatorios entre los límites del arreglo, sin repetición 
+Con este nroComparaciones el algoritmo pertence a la categoria Sherwood
+
+ejercicio 3)
+
+FUNCION vidaUtilSateliteMC(nroPaneles,vidaUtilMin, vidaUtilMax): entero -> entero
+    PARA i = 1 HASTA nroPaneles
+        arregloPaneles[i] <- uniforme(vidaUtilMin, vidaUtilMax)
+    FIN_PARA
+    arregloPaneles <- ORDENAR_DESCENDENTE(arregloPaneles);
+    RETORNA arregloPaneles[2];
+FIN_FUNCION
+
+ALGORITMO vidaUtilSatelite 
+ENTRADA: vidaUtilMin: entero, vidaUtilMax: entero, nroPaneles: entero > 0, nroComparaciones > 0
+SALIDA: phi
+AUXILIAR: panel, acumulador
+A0. panel <- 0
+    acumulador <- 0
+A1. PARA i = 1 HASTA nroComparaciones HACER
+        panel = vidaUtilSateliteMC(nroPaneles,vidaUtilMin, vidaUtilMax)
+        acumulador <- acumulador + panel
+    FIN_PARA
+A2. phi <- acumulad         or / nroComparaciones
+A3. ESCRIBIR(phi)
+A4. FIN
+
+
+
+
+
+
+
+
+
+
+
+        
+    
