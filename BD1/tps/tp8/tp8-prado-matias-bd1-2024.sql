@@ -88,13 +88,23 @@ UPDATE venta SET entregado = 'devuelto'
 WHERE entregado = 'devuelto';
 rollback;
 
+/*i*/
+start transaction;
+-- SELECT * FROM prestamo
+UPDATE prestamo
+INNER JOIN socio USING(id_socio)
+INNER JOIN ciudad USING(id_ciudad)
+INNER JOIN provincia USING(id_provincia)
+SET multa = (multa * 1.5)
+WHERE provincia = 'Buenos Aires' AND multa IS NOT NULL;
+rollback;
 
-select * from socio
-inner join ciudad using (id_ciudad)
-inner join prestamo using (id_socio)
-where id_ciudad = 554 AND id_articulo = 274;
-
-select * from prestamo;
-select * from articulo
-WHERE titulo like "%la hoja%";
-
+/*s*/
+START TRANSACTION;
+INSERT INTO funcion VALUES(10, "Sin Asignar");
+UPDATE empleado
+SET id_funcion = 10
+WHERE id_funcion = 8; 
+DELETE FROM funcion
+WHERE funcion = "Auxiliar";
+ROLLBACK;
