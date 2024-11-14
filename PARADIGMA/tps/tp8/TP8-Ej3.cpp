@@ -1,0 +1,20 @@
+#include <iostream>
+#include "Tienda.h"
+using namespace std;
+
+int main() {
+	Tienda T1("Paradigmas", "Av. Independencia 1800");
+
+	// CREAR 3 PRODUCTOS
+
+	// GENERAR 1 COMPRA DE CONTADO CON FECHA 22/09/2024 CON 1 PRODUCTO DE LA TIENDA
+
+	// GENERAR 1 COMPRA EN 3 CUOTAS CON FECHA 06/08/2024 QUE CONTENGA 3 PRODUCTOS DE LA TIENDA
+
+	// GENERAR 1 COMPRA EN 6 CUOTAS CON FECHA 15/09/2024 QUE CONTENGA 2 PRODUCTOS DE LA TIENDA
+
+	T1.resumenCompras(9,2024);
+
+	return 0;
+
+}
