@@ -2,7 +2,8 @@
 #include "IteradorInverso.h"
 #include "IteradorPar.h"
 
-void MostrarContenido(Contenedor &C, IteradorInverso &iterador);
+void MostrarContenido(Contenedor &C, IteradorInverso &iterador); //tengo que poner el & para pasarle la referencia directamente sino llamara al constructor copia
+                                                                //pero en este caso nomas hago esto pues no tengo que modificar Contenedor.h
 void MostrarContenido(Contenedor &C, IteradorPar &iterador);
 int main()
 {

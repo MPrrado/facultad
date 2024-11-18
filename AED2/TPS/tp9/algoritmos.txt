@@ -18,7 +18,7 @@ FUNCION cumpleEcCircunferencia(radio,x,y): entero x entero -> booleano
 FIN_FUNCION
 
 ejercicio 2)
-FUNCION compararProbabilista(vector1, vector2, izq, der, nroComparaciones): arreglo X arreglo X entero X entero -> booleano
+FUNCION compararProbabilista(vector1, vector2, izq, der, nroComparaciones): arreglo X arreglo X entero X entero X entero -> booleano
     sonIguales <- VERDADERO
     MIENTRAS nroComparaciones > 0 ^ sonIguales <> FALSO
         i <- uniforme(izq, der)
