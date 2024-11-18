@@ -1,4 +1,5 @@
 #include "IteradorInverso.h"
+#include "IteradorPar.h"
 
 void MostrarContenido(IteradorInverso &iterador);
 int main()
