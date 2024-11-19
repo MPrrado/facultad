@@ -12,6 +12,7 @@ FIN_FUNCION
 
 FUNCION cumpleEcCircunferencia(radio,x,y): entero x entero -> booleano
     SI ((x^2+y^2) <= radio^2) ENTONCES
+    
         RETORNA VERDADERO
     SINO
         RETORNA FALSO
