@@ -37,9 +37,27 @@ entradas INT NOT NULL,
 FOREIGN KEY (id_arbitro) REFERENCES participante(id_participante) ON DELETE NO ACTION ON UPDATE CASCADE,
 FOREIGN KEY (id_sala) REFERENCES sala(id_sala) ON DELETE NO ACTION ON UPDATE CASCADE );
 
+CREATE TABLE juega(
+id_partida INT,
+id_jugador INT,
+PRIMARY KEY (id_partida, id_jugador), -- asi para poder generar distintas pk's
+color VARCHAR(30),
+FOREIGN KEY (id_partida) REFERENCES partida(id_partida) ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (id_jugador) REFERENCES jugador(id_jugador) ON DELETE NO ACTION ON UPDATE CASCADE
+);
 
+CREATE TABLE torneos(
+id_jugador INT,
+torneos VARCHAR(500),
+PRIMARY KEY(id_jugador, torneos),
+FOREIGN KEY (id_jugador) REFERENCES jugador(id_jugador) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
-
-
+CREATE TABLE medios(
+id_sala INT,
+medio VARCHAR(50),
+PRIMARY KEY(id_sala, medio),
+FOREIGN KEY (id_sala) REFERENCES sala(id_sala) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 

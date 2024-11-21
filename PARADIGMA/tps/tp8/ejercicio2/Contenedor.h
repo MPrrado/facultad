@@ -12,6 +12,9 @@ template <class X>
 class IteradorGeneralizacion;
 
 template <class X>
+class IteradorPar;
+
+template <class X>
 class Contenedor{
 	const X indefinido;
 	X *arreglo;
@@ -23,15 +26,16 @@ public:
 		X  elemento(int posicion);
 		bool eliminarElemento(int posicion);
 		void escribir();
-		int capacidad();
+		const int capacidad();
 		~Contenedor();
 		friend class IteradorGeneralizacion<X>;
+		friend class IteradorPar<X>;
 };
 
 
 template <class X>
 X* Contenedor<X>::reservarMemoria(unsigned int tama){
-	int *reserva = new int[tama];
+	X* reserva = new X[tama];
 	if(reserva==NULL){
 		cout<<"Problema: no se pudo realizar la reserva";
 	}
@@ -74,7 +78,7 @@ bool Contenedor<X>::eliminarElemento(int posicion){
 	return resultado;
 }
 template <class X>
-int Contenedor<X>::capacidad(){
+const int Contenedor<X>::capacidad(){
 	return this->MAX;
 }
 template <class X>

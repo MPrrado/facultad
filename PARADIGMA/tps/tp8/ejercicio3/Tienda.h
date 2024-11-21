@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include "Compra.h"
-
+#include <vector>
 class Tienda {
 	string nombre;
 	string direccion;
-
+	vector<Compra*> listaCompras;
 	//COMPLETAR ATRIBUTOS
 
 public:

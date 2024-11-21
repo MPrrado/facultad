@@ -16,7 +16,7 @@ class IteradorGeneralizacion
         }
         virtual bool HayElementos() = 0;
         virtual void Avanzar()=0;
-        virtual X GetDatoContenedor();
+        X GetDatoContenedor();
 };
 
 template <class X>
