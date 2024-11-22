@@ -17,8 +17,9 @@ GROUP BY id_socio;
 START TRANSACTION;
 
 INSERT INTO deudores (id_socio,nombre,domicilio,id_ciudad,monto_total_adeudado)
-SELECT id_socio, nombre, domicilio, id_ciudad, (SUM(monto) + COALESCE(SUM(multa),0)) AS monto_total_adeudado FROM socio s
+SELECT id_socio, nombre, domicilio, id_ciudad, (SUM(monto) + SUM(multa)) AS monto_total_adeudado FROM socio s
 INNER JOIN persona p ON s.id_socio = p.id_persona
 INNER JOIN prestamo USING (id_socio)
+WHERE multa IS NOT NULL
 GROUP BY id_socio; 
 ROLLBACK;
