@@ -1,0 +1,54 @@
+EJERCICIO 2)
+a)
+
+FUNCION mochilaMultipleDinamica(p,b,M,n): vector pesos, vector beneficios, peso maximo mochila, cantidad de elementos -> entero>= 0
+    AUXILIAR c(1...n, 0...m) matriz de resultados parciales
+    PARA k = 1 HASTA n HACER
+        c[k,0] <- 0
+    PARA i = 1 HASTA n HACER
+        PARA j = 1 HASTA m HACER
+            SI i = 1 ^ p[i] < j ENTONCES
+                c[i,j] <- (j DIV p[1]) * b[1]
+            SINO 
+                SI i = 1 ^ p[i] > j ENTONCES
+                    c[i,j] <- INF
+                SINO
+                    SI p[i] > j ENTONCES
+                        c[i,j] <- c[i-1,j]
+                    SINO
+                        c[i,j] <- MAX(c[i-1,j], c[i,j-p[i]]+b[i])
+                    FIN_SI
+                FIN_SI
+            FIN_SI
+    RETORNA c[n,m];
+FIN_FUNCION
+
+EJERCICIO 3)
+b)
+FUNCION MinimaSuma(T, n): matriz triangular inferior X entero > 0-> entero >=0 
+    AUXILIAR C: matriz cuadrad triangular inferior de suma minima, min: entero >= 0 
+    min <- inf
+    PARA i = 1 HASTA n HACER
+        PARA j = 1 HASTA n HACER
+            SI i = 1 ^ j = 1 ENTONCES
+                C[i,j] <- T[i,j]
+            SINO 
+                SI j > i ENTONCES
+                    C[i,j] <- INF
+                SINO 
+                    C[i,j] <- T[i,j] + MIN(C[i-1, j-1], C[i-1,j])
+                FIN_SI
+            FIN_SI
+        FIN_PARA j
+    FIN_PARA i
+    PARA k = 1 HASTA n HACER
+        SI (C[n,k] < min) ENTONCES
+            min <- C[n,k] 
+        FIN_SI
+    FIN_PARA k
+    RETORNA min
+FIN_FUNCION
+
+    
+
+

@@ -13,7 +13,7 @@ double Producto::getPrecio(){
 
 string Producto::resumenProducto(){
 	stringstream flujo;
-	flujo << this->codigo <<" - "<< this->descripcion <<" - "<< this->precio<<endl;
+	flujo << this->codigo <<" --------------- "<< this->descripcion <<" --------------- $"<< this->precio<<endl;
 	return string(flujo.str());
 }
 

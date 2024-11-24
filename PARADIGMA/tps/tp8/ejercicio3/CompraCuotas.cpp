@@ -15,13 +15,13 @@ double CompraCuotas :: calcularMonto()
     double monto = this->totalProductos();
     if(this->cantidadCuotas == 3)
     {
-        monto*=(1-INTERES3CUOTAS);
+        monto*=(1+INTERES3CUOTAS);
     }
     else
     {
         if(this->cantidadCuotas == 6)
         {
-            monto *= (1-INTERES6CUOTAS);
+            monto *= (1+INTERES6CUOTAS);
         }
     }
     return monto;

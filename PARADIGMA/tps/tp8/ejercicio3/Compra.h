@@ -9,7 +9,6 @@ using namespace std;
 class Compra {
 
 protected:
-	vector<Producto*> :: iterator i;
 	static int autoIncremental;
 	int codigo;
 	Fecha* fechaCompra;

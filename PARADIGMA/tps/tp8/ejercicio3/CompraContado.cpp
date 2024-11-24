@@ -6,7 +6,9 @@ CompraContado::CompraContado(vector<Producto *> listaProductos, Fecha* fechaComp
 
 CompraContado::~CompraContado()
 {
-    for (this->i; i < this->listaProductos.end(); i++)
+    vector<Producto*> :: iterator i;
+	i = this->listaProductos.begin();
+    for (i; i < this->listaProductos.end(); i++)
     {
         delete (*i);
     }

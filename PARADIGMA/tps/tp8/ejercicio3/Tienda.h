@@ -12,7 +12,7 @@ class Tienda {
 
 public:
 	Tienda(string nomb, string dir);
-	void generarCompra(/*COMPLETAR CON LOS PARAMETROS ADECUADOS*/);
+	void generarCompra(vector<Producto*> listaProductos, Fecha* fechaCompra);
 	void resumenCompras(int mes, int anio);
 	virtual ~Tienda();
 };
