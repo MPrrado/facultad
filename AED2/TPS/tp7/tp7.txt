@@ -3,8 +3,8 @@
 FUNCION ExpresionAritmeticaM(i, M, V, R): entero>0 X entero X vector de nat  X entero -> booleano
     //globales n, i = 2, O (vector de operadores inicializado en vacio), m = n-1 
     SI i = n ENTONCES
+        EscribirExpresion(V, O);
         SI R = M ENTONCES
-            EscribirExpresion(V, O);
             RETORNA VERDADERO
         SINO
             RETORNA FALSO
