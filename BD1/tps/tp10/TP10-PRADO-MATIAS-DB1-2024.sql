@@ -41,8 +41,45 @@ INNER JOIN persona pe ON e.id_empleado = pe.id_persona
 WHERE importe > (SELECT AVG(importe) FROM venta);
 
 /* f) */
+SELECT nombre, titulo, fecha FROM socio s
+INNER JOIN persona p ON s.id_socio = p.id_persona
+INNER JOIN venta USING (id_socio)
+INNER JOIN detalle_venta USING(id_venta)
+INNER JOIN articulo USING (id_articulo)
+INNER JOIN autor USING (id_autor)
+INNER JOIN ciudad USING (id_ciudad)
+INNER JOIN (
+				SELECT * FROM provincia 
+                WHERE provincia IN ("Salta", "Tucuman")
+) AS prov USING (id_provincia)
+WHERE autor = (
+					SELECT autor FROM autor
+					INNER JOIN articulo USING (id_autor)
+					WHERE titulo = "El Gato Negro"
+);
 
+-- g)
 
+SELECT ciudad, provincia, nombre FROM socio s
+INNER JOIN persona p ON s.id_socio = p.id_persona
+RIGHT JOIN ciudad USING (id_ciudad)
+INNER JOIN (
+			SELECT * FROM provincia
+)as prov USING (id_provincia)
+ORDER BY ciudad DESC, nombre ASC;
+
+-- h)
+ SELECT id_socio, nombre, SUM(cantidad) AS cantidadArticulosComprados FROM socio s
+ INNER JOIN venta USING (id_socio)
+ INNER JOIN detalle_venta USING (id_venta)
+ INNER JOIN articulo USING (id_articulo)
+ INNER JOIN persona p ON s.id_socio = p.id_persona
+ GROUP BY id_socio
+ HAVING cantidadArticulosComprados > ( SELECT SUM(cantidad) AS cantidad FROM detalle_venta 
+ INNER JOIN articulo USING (id_articulo)
+ WHERE titulo = "La Mano");
+
+ 
 -- i)
 SELECT id_empleado, nombre, funcion, sueldo, TIMESTAMPDIFF(YEAR, fecha_alta, CURDATE()) AS antiguedad, YEAR(fecha_alta) AS año_ingreso FROM empleado e
 INNER JOIN funcion USING(id_funcion)
@@ -53,3 +90,14 @@ WHERE TIMESTAMPDIFF(YEAR, fecha_alta, CURDATE()) > 4 AND fecha_alta > (
     WHERE nombre = "Valdivia Nadia"
 )
 ORDER BY antiguedad DESC;
+
+/*
+j) Muestre el id, nombre, función y monto total de ventas de los empleados que hayan vendido
+menos que el 5% del monto total de las ventas realizadas en Chaco.*/
+SELECT
+
+-- l) subconsulta en el select con where genero IN ("", "", "")
+
+/*m) y n) NO EN TODOS LOS MOTORES ES IGUAL
+UPDATE Y SELECT EN LAMISMA TABLA ESTA BIEN PLANTEADO PERO EL DBMS NO ME DEJA.alter
+Los UPDATE y DELETE tenemos que hacer subconsulta de subconsulta para tener como si fuera otra tabla*/
