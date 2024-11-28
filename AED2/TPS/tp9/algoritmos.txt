@@ -59,7 +59,7 @@ A1. PARA i = 1 HASTA nroComparaciones HACER
         panel = vidaUtilSateliteMC(nroPaneles,vidaUtilMin, vidaUtilMax)
         acumulador <- acumulador + panel
     FIN_PARA
-A2. phi <- acumulad         or / nroComparaciones
+A2. phi <- acumulador / nroComparaciones
 A3. ESCRIBIR(phi)
 A4. FIN
 
