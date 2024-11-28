@@ -94,9 +94,57 @@ ORDER BY antiguedad DESC;
 /*
 j) Muestre el id, nombre, función y monto total de ventas de los empleados que hayan vendido
 menos que el 5% del monto total de las ventas realizadas en Chaco.*/
-SELECT
+SELECT id_empleado, nombre, funcion, SUM(total) AS monto_total_vendido FROM persona p
+INNER JOIN empleado e ON p.id_persona = e.id_empleado
+INNER JOIN funcion USING(id_funcion)
+INNER JOIN venta USING(id_empleado)
+GROUP BY id_empleado
+HAVING monto_total_vendido < 0.05 * (
+										SELECT SUM(total) FROM venta
+                                        INNER JOIN socio USING(id_socio)
+                                        INNER JOIN ciudad USING(id_ciudad)
+                                        INNER JOIN provincia USING(id_provincia)
+                                        WHERE provincia = "Chaco"
+);
+
+
+/*
+k. Muestre las ventas y prestamos del dia 20/09/2020. Se debe mostrar el nombre del socio, la
+fecha, el importe (use el total en la venta) y el tipo de operación (venta o préstamo). Ordene
+los resultados por el nombre del socio. Ej:
+*/
+
+SELECT nombre, fecha, total AS importe , operacion FROM socio s 
+INNER JOIN persona p ON s.id_socio = p.id_persona
+INNER JOIN (
+			SELECT id_socio,fecha, total, "Venta" AS operacion FROM venta
+			WHERE fecha = "2020-09-20"
+			UNION
+			SELECT id_socio, inicio_prestamo, monto, "Préstamo" AS operacion FROM prestamo
+			WHERE inicio_prestamo = "2020-09-20"
+) AS tabla USING(id_socio)
+ORDER BY nombre;
+
+/*
+LEFT JOIN socio s ON p.id_persona = s.id_socio
+LEFT JOIN ciudad USING(id_ciudad)
+INNER JOIN provincia USING(id_provincia)
+WHERE provincia = "Chaco";
+*/
+
 
 -- l) subconsulta en el select con where genero IN ("", "", "")
+/*
+L)
+	Liste los artículos de género Misterio, Comedia y Ficción. Muestre el título, año, precio y el
+	promedio de precios del género al corresponden
+*/
+SELECT titulo, anio, precio, (
+										SELECT genero FROM genero
+										WHERE genero IN ("Misterio", "Comedia", "Ficcion" )
+										) 
+FROM articulo
+INNER JOIN genero USING(id_genero);
 
 /*m) y n) NO EN TODOS LOS MOTORES ES IGUAL
 UPDATE Y SELECT EN LAMISMA TABLA ESTA BIEN PLANTEADO PERO EL DBMS NO ME DEJA.alter
