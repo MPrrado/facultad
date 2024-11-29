@@ -139,13 +139,87 @@ L)
 	Liste los artículos de género Misterio, Comedia y Ficción. Muestre el título, año, precio y el
 	promedio de precios del género al corresponden
 */
-SELECT titulo, anio, precio, (
-										SELECT genero FROM genero
-										WHERE genero IN ("Misterio", "Comedia", "Ficcion" )
-										) 
-FROM articulo
-INNER JOIN genero USING(id_genero);
+-- l)
+SELECT titulo, anio, precio, precio_promedio, g.genero FROM articulo a
+INNER JOIN genero g USING(id_genero)
+INNER JOIN (SELECT * FROM (SELECT genero, AVG(precio) as precio_promedio FROM articulo
+INNER JOIN genero USING(id_genero)
+WHERE genero IN('Misterio','Comedia','Ficción')
+GROUP BY genero) AS tabla
+) AS t ON g.genero = t.genero
+WHERE g.genero IN('Misterio','Comedia','Ficción');
+
+-- m)
+start transaction;
+UPDATE articulo
+SET precio = precio +
+(
+SELECT * FROM(
+SELECT AVG(precio)*0.3 FROM articulo
+INNER JOIN genero USING (id_genero)
+WHERE genero = 'Aventuras') AS algo
+);
+rollback;
+
+-- n)
+UPDATE venta
+INNER JOIN envio USING(id_envio)
+SET gasto_envio = gasto_envio + 1000
+WHERE envio IN
+(
+SELECT * FROM(
+SELECT envio FROM venta
+INNER JOIN envio USING(id_envio)
+WHERE fecha = '2020-05-08'
+) AS tablaAux
+);
+
+-- o)
+DELETE FROM funcion f
+WHERE funcion NOT IN(SELECT * FROM (SELECT funcion FROM empleado
+INNER JOIN funcion USING(id_funcion)
+)AS tablaAux
+);
+
+-- p)
+DELETE FROM prestamo p
+WHERE inicio_prestamo < (SELECT fecha FROM venta
+INNER JOIN socio USING(id_socio)
+INNER JOIN persona ON id_socio = id_persona
+WHERE nombre = 'Tejada Gabriela Claudia');
+
+
 
 /*m) y n) NO EN TODOS LOS MOTORES ES IGUAL
 UPDATE Y SELECT EN LAMISMA TABLA ESTA BIEN PLANTEADO PERO EL DBMS NO ME DEJA.alter
 Los UPDATE y DELETE tenemos que hacer subconsulta de subconsulta para tener como si fuera otra tabla*/
+
+
+/*VISTAS*/
+
+CREATE VIEW info_venta AS
+(SELECT s.nombre AS nombre_socio, e.nombre AS nombre_empleado, titulo, dv.precio, fecha_envio AS fecha_entrega, entregado
+FROM venta
+INNER JOIN persona s ON id_socio = s.id_persona
+INNER JOIN persona e ON id_empleado = e.id_persona
+INNER JOIN detalle_venta dv USING (id_venta)
+INNER JOIN articulo USING (id_articulo)
+ORDER BY titulo, fecha);
+
+SELECT * FROM info_venta;
+
+CREATE VIEW info_prestamo AS
+(
+	SELECT nombre, ciudad, provincia, titulo, autor, genero, editorial, monto, multa, inicio_prestamo AS fecha_inicio, fin_prestamo AS fecha_fin, fecha_devolucion, TIMESTAMPDIFF(DAY, inicio_prestamo, fin_prestamo) AS dias_agendados, TIMESTAMPDIFF(DAY, inicio_prestamo, fecha_devolucion) AS dias_duracion
+	FROM persona
+	INNER JOIN socio ON id_socio = id_persona
+	INNER JOIN prestamo USING(id_socio)
+	INNER JOIN ciudad USING(id_ciudad)
+	INNER JOIN provincia USING(id_provincia)
+	INNER JOIN articulo USING(id_articulo)
+	INNER JOIN autor USING(id_autor)
+	INNER JOIN genero USING(id_genero)
+	INNER JOIN editorial USING(id_editorial)
+);
+
+SELECT nombre, titulo, COALESCE(dias_duracion - dias_agendados, 'No devuelto') AS dias_mora FROM info_prestamo;
