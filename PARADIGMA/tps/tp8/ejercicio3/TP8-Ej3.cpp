@@ -18,8 +18,8 @@ int main() {
 
 	// GENERAR 1 COMPRA DE CONTADO CON FECHA 22/09/2024 CON 1 PRODUCTO DE LA TIENDA
 
-	// Fecha fechaCompra1(22,9,2024);
-	// T1.generarCompra(listaProductos1,&fechaCompra1);
+	Fecha fechaCompra1(22,9,2024);
+	T1.generarCompra(listaProductos1,&fechaCompra1);
 
 
 	// GENERAR 1 COMPRA EN 3 CUOTAS CON FECHA 06/08/2024 QUE CONTENGA 3 PRODUCTOS DE LA TIENDA
@@ -34,6 +34,12 @@ int main() {
 	// GENERAR 1 COMPRA EN 6 CUOTAS CON FECHA 15/09/2024 QUE CONTENGA 2 PRODUCTOS DE LA TIENDA
 
 	vector<Producto*> listaProductos3;
+	listaProductos3.push_back(&p1);
+	listaProductos3.push_back(&p2);
+	listaProductos3.push_back(&p3);
+	Fecha fechaCompra3(15,9,2024);
+	T1.generarCompra(listaProductos3, &fechaCompra3);
+
 	T1.resumenCompras(8,2024);
 
 	return 0;

@@ -16,5 +16,6 @@ class Control
         Fecha* GetFechaControl();
         Fecha* GetFecProxControl();
         string GetDescripcion();
+        void EscribirInfo();
 };
 #endif 

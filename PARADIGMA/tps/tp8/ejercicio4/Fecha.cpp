@@ -113,6 +113,12 @@ long int Fecha::cantidadDiasDelAnio(){
 		return cantidadDias;
 }
 
+string Fecha::toString() {
+	stringstream flujo;
+	flujo << this->dia <<"/"<< this->mes <<"/"<< this->anio;
+	return string(flujo.str());
+}
+
 bool esAnioBisiesto(int anio){
 	return ((anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0);
 }

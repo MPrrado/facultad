@@ -33,10 +33,11 @@ public:
 
 	bool esAnioBisiesto(void) const;
 	long int cantidadDiasDelAnio();
+	string toString();
 
 	//Sobrecarga de operadores
 	friend bool operator>=(Fecha fecha1, Fecha fecha2);
-	//friend long int operator-(Fecha &fecha1, Fecha &fecha2);//Retorna la diferencia de días entre 2 fechas
+	//friend long int operator-(Fecha &fecha1, Fecha &fecha2);//Retorna la diferencia de dï¿½as entre 2 fechas
 
 };
 long int operator-(Fecha &fecha1, Fecha &fecha2);

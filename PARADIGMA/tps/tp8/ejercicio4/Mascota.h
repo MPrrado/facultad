@@ -7,7 +7,7 @@ using namespace std;
 #include "Control.h"
 class Mascota
 {
-    private:   
+    protected:   
         string nombre;
         Fecha* fecNac;
         string raza;
@@ -15,11 +15,11 @@ class Mascota
         vector<Control*> :: iterator i;
     public:
         Mascota(string nombre, Fecha* fecNac, string raza);
-        ~Mascota();
+        virtual ~Mascota();
         void AltaControl(Fecha* fecha, string descripcion, double monto,Fecha* fecProxContol);
         double GetMonto(short mes, short anio);
         bool TieneControlPronto();
-        void ListarInformacion();
+        virtual void ListarInformacion();
         string GetNombre();
 
     protected:

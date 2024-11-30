@@ -7,17 +7,28 @@ double Control :: GetMonto()
 
 Fecha* Control:: GetFechaControl()
 {
-    this->fechaControl;
+    return this->fechaControl;
 }
 
 Fecha* Control:: GetFecProxControl()
 {
-    this->fecProxControl;
+    return this->fecProxControl;
 }
 
 string Control:: GetDescripcion()
 {
-    this->descripcion;
+   return this->descripcion;
+}
+
+void Control :: EscribirInfo()
+{
+    cout<<"------------------ CONTROL ------------------"<<endl;
+    cout<<"Fecha Control: " <<this->fechaControl->toString()<<endl;
+    cout<<"Descripcion: " <<this->descripcion<<endl;
+    cout<<"Monto: " <<this->monto<<endl;
+    cout<<"Fecha Proximo Control: " <<this->fecProxControl->toString()<<endl;
+    cout<<"--------------------------------------------------------"<<endl;
+
 }
 
 Control :: Control(Fecha* fechaControl, string descripcion, double monto, Fecha* fecProxControl)
@@ -25,10 +36,11 @@ Control :: Control(Fecha* fechaControl, string descripcion, double monto, Fecha*
     this->fechaControl = fechaControl;
     this->descripcion = descripcion;
     this->monto = monto;
-    this->fechaControl = fecProxControl;
+    this->fecProxControl = fecProxControl;
 }
 
 Control :: ~Control()
 {
+    
     
 }
