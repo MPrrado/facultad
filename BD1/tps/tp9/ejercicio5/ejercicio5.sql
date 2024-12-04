@@ -19,7 +19,7 @@ INNER JOIN  parentesco p ON p.parentesco = f.parentesco
 SET f.id_parentesco = p.id_parentesco;
 
 start transaction;
-ALTER TABLE familiar
+ALTER TABLE familiarparentesco
 	DROP COLUMN parentesco;
     
     

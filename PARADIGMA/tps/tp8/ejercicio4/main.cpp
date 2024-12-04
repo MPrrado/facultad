@@ -1,9 +1,15 @@
 #include "MascotaUNT.h"
 #include "MascotaExotica.h"
 #include "MascotaTradicional.h"
-
+#include <stack>
+#include <list>
+#include <iterator>
 int main()
 {
+    stack<int> mipila;
+    list<int> miLista;
+    list<int>:: iterator i;
+    
     //generamos las fechas nacimientos de las mascotas
     Fecha fn1(14,2,2003);
     Fecha fn2(2,3,1982);
