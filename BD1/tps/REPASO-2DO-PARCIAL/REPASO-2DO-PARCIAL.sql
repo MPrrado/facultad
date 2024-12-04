@@ -425,5 +425,75 @@ CREATE TABLE `veterinaria`.`mascota` (
     ON UPDATE NO ACTION);
 
 
+/*---------------------------- tp9 ---------------------------*/
+
+/*------- EJERCICIO 2-------*/
+/*a)*/
+ALTER TABLE venta
+	MODIFY importe DECIMAL(10,2) DEFAULT(0),
+    MODIFY gasto_envio DECIMAL(10,2) DEFAULT(0),
+    MODIFY total DECIMAL(10,2) DEFAULT(0);
+/*b)
+El campo cantidad de la tabla detalle_venta no puede ser menor que 1 (uno)
+*/
+
+ALTER TABLE detalle_venta
+	ADD CONSTRAINT check_cantidad CHECK(cantidad >= 1);
+    
+/*c)
+Agregue el campo estado_multa VARCHAR (8) a la tabla prestamo
+*/
+ALTER TABLE prestamo
+	ADD estado_multa VARCHAR(8);
+    
+/*
+D) El campo domicilio de la tabla persona no puede ser nulo.
+*/
+ALTER TABLE persona
+	MODIFY domicilio VARCHAR(100) NOT NULL;
+/*
+E) Los campos origen, autor y editorial de sus respectivas tablas, no deben permitir
+repetidos.
+*/
+ALTER TABLE origen
+	MODIFY origen VARCHAR(45) UNIQUE;
+ALTER TABLE autor
+	MODIFY autor VARCHAR(50) UNIQUE;
+ALTER TABLE editorial
+	MODIFY editorial VARCHAR(50) UNIQUE;
+    
+/*---------- EJERCICIO 3 ----------*/
+CREATE TABLE proveedor(
+	id_proveedor INT PRIMARY KEY,
+	nombre VARCHAR(100) NOT NULL,
+    dni VARCHAR(8) NOT NULL,
+    domicilio VARCHAR(100),
+    telefono VARCHAR(10)
+);
+
+/*------------ ejercicio 5 ------------------*/
+
+CREATE TABLE parentesco (
+	id_parentesco INT AUTO_INCREMENT,
+	PRIMARY KEY (id_parentesco),
+	parentesco VARCHAR (50) NOT NULL
+);
+
+ALTER TABLE familiar
+	ADD id_parentesco INT,
+    ADD CONSTRAINT fk_parentesco FOREIGN KEY (id_parentesco) REFERENCES parentesco(id_parentesco);
+    
+INSERT INTO parentesco (parentesco)
+SELECT DISTINCT parentesco FROM familiar;
+
+UPDATE familiar f
+INNER JOIN parentesco p ON f.parentesco = p.parentesco
+SET f.id_parentesco = p.id_parentesco;
+
+ALTER TABLE familiar
+DROP COLUMN parentesco;
+
+    
+
 
                         
