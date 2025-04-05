@@ -105,3 +105,45 @@ WHERE id_persona NOT IN (SELECT id_persona FROM persona pe
 ORDER BY apellido, nombre
 select * from habitacion;
 ORDER BY especialidad;
+
+
+/*
+10) Muestre los pacientes a los que les hayan facturado más que ‘LAURA MONICA JABALOYES’ desde el
+15/05/2022 a la fecha.
+*/
+
+
+SELECT nombre, apellido, SUM(costo) AS total_cobrado FROM persona
+INNER JOIN paciente ON id_persona = id_paciente
+INNER JOIN internacion USING(id_paciente)
+WHERE fecha_inicio > '2022-05-15'
+GROUP BY (nombre, apellido)
+HAVING SUM(costo) > (
+						SELECT SUM(costo) AS total_cobrado FROM persona
+						INNER JOIN paciente ON id_persona = id_paciente
+						INNER JOIN internacion USING(id_paciente)
+						WHERE nombre = 'LAURA MONICA' AND apellido = 'JABALOYES' AND fecha_inicio > '2022-05-15'
+						GROUP BY (id_paciente)
+						)
+
+/*
+11) Muestre los pacientes que hayan sido internado más veces que MARTA AMALIA GRAMAJO antes del año
+2020.
+*/
+
+SELECT nombre, apellido, count(id_paciente) AS numero_internaciones FROM persona
+INNER JOIN paciente ON id_paciente = id_persona
+INNER JOIN internacion USING(id_paciente)
+WHERE fecha_inicio > '2022-05-15'
+GROUP BY (nombre, apellido)
+HAVING count(id_paciente) > (
+								SELECT count(id_paciente) AS numero_internaciones FROM persona
+								INNER JOIN paciente ON id_paciente = id_persona
+								INNER JOIN internacion USING(id_paciente)
+								WHERE nombre = 'MARTA AMALIA' AND apellido = 'GRAMAJO'
+								)
+
+SELECT nombre, apellido FROM persona
+INNER JOIN paciente ON id_persona = id_paciente
+where nombre = 'LAURA MONICA' aND apellido = 'JABALOYES'
+
