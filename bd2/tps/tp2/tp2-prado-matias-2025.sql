@@ -15,7 +15,7 @@
 	/* d) */
 
 	ALTER TABLE consultorio 
-	ALTER COLUMN interno TYPE int USING interno::integer -- es necesario pues no hay compatibilidad de texto a int
+	ALTER COLUMN interno TYPE int USING interno::integer -- es necesario "USING interno::integer" pues no hay compatibilidad de texto a int
 
 	/* e) */
 
@@ -112,4 +112,42 @@
 	SELECT * FROM empleado
 	order by nombre;
 	ORDER BY piso;
+	
+	
+	/*
+	Dado el siguiente modelo relacional que registra las ayudas sociales que reciben los ciudadanos
+	llevando registro de relevamiento ambiental y el grupo familiar al que pertenecen, realice:
+	a) Analice cuidadosamente el tipo de dato para cada campo y elija adecuadamente el tipo de
+	cada uno de ellos.
+	b) Analice el o los campos por los cuales considera que se realizarán las búsquedas y proponga
+	la creación de los índices necesarios. 
+	
+	a)
+	tabla "persona":
+		nombres: varchar(50)
+		apellido: varchar(50)
+		documento: varchar(8)
+		fechNacimiento: date
+		sexo: text
+		tieneDiscapacidad: bool
+		tieneObraSocial: bool
+		esJubilado: bool
+		salarioUniversal: bool (?
+		cuil: varchar(11)
+		telefono: text
+		domicilio: text
+		baja: bool
+		
+	tabla "gruposFamiliares"
+		materialCasa: text
+		tieneBanio: bool
+		tipoBanio: text
+		tieneAgua: bool
+		tieneLuz: bool
+	
+	tabla "beneficio"
+		beneficio:
+		
+	*/
+	
 	
