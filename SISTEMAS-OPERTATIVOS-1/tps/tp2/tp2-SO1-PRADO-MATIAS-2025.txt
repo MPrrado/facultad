@@ -1,0 +1,25 @@
+3)
+
+El comando strace en Linux es una herramienta poderosa para rastrear las llamadas al sistema y las señales que un proceso realiza o recibe. Según la documentación oficial, su propósito principal es interceptar y registrar estas interacciones, proporcionando detalles como el nombre de la llamada al sistema, sus argumentos y el valor de retorno.
+
+Es especialmente útil para:
+
+Diagnóstico y depuración: Ayuda a identificar problemas en programas sin necesidad de acceder al código fuente.
+
+Aprendizaje: Permite a estudiantes y curiosos entender cómo funcionan las llamadas al sistema.
+
+Aislamiento de errores: Los programadores pueden usarlo para examinar el límite entre el usuario y el kernel, lo que es útil para detectar condiciones de carrera o errores.
+
+Por ejemplo, al ejecutar strace ls, podrías ver las llamadas al sistema que realiza el comando ls para listar archivos. Si necesitas más detalles o ejemplos, ¡puedo ayudarte a explorarlo! 😊
+
+4)
+
+El comando ps en Linux se utiliza para mostrar información sobre los procesos en ejecución en el sistema. De acuerdo con la documentación oficial, permite ver una instantánea del estado de los procesos en el momento en que se ejecuta el comando.
+
+Características principales de ps:
+
+Información básica de los procesos: Muestra el ID de proceso (PID), el usuario que ejecuta el proceso, el uso de CPU y memoria, el tiempo de ejecución, entre otros detalles.
+
+Filtros personalizados: Puedes usar opciones y argumentos para filtrar y mostrar procesos específicos.
+
+Formatos de salida flexibles: Permite personalizar el formato en que se muestran los datos.
