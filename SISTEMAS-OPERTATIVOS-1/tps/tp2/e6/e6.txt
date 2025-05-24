@@ -1,3 +1,2 @@
-1-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam suscipit repudiandae non magni in provident quia quos! Dolore voluptatum quod asperiores odio a nulla, nam ipsam culpa, tenetur ad quo?
-2-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam suscipit repudiandae non magni in provident quia quos! Dolore voluptatum quod asperiores odio a nulla, nam ipsam culpa, tenetur ad quo?
-3-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam suscipit repudiandae non magni in provident quia quos! Dolore voluptatum quod asperiores odio a nulla, nam ipsam culpa, tenetur ad quo?
+validación principalmente en los inserts!!
+es necesario hacer las validaciones como por ejemplo, datos necesarios al ingresar un paciente, ejemplo dni revisar que no es nulo. Entre otras validaciones

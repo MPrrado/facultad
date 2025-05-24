@@ -1,0 +1,17 @@
+validación principalmente en los inserts!!
+es necesario hacer las validaciones como por ejemplo, datos necesarios al ingresar un paciente, ejemplo dni revisar que no es nulo. Entre otras validaciones.
+
+no se puede hacer un delete directamente de los medicamentos por el tema del tipo de borrado de las fk 
+LOS PROCEDIMIENTOS NO SE PUEDEN USAR EN COLUMNAS MIENTRAS QUE LAS FUNCIONES SI !!
+entonces teniendo en cuenta esto tenemos que utilizar las 2 fn que armamos para los últimos dos procedimientos.
+
+no hay control de versiones en postgrest para los sp (con git)
+
+punto 1b)
+
+se puede tener 2 sp uno para empleado y para persona
+o tener 1 y asegurarme que se inserte en persona y empleado 
+cualquier camino que elijamos estará bien.
+Tener en cuenta como verificar la pk (lo mejor pareciera ser que es con EXISTS)
+
+TIPO PARCIAL -> el que modifica por distintos parametros
