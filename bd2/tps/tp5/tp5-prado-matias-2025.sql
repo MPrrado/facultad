@@ -17,8 +17,7 @@ ALTER TYPE public.domicilio
     OWNER TO postgres;
 	
 --creo los enums para sector y cargo de la tabla empleado
-CREATE TYPE public.cargo AS ENUM
-    ('administrativo', 'vendedor', 'cajero', 'gerente');
+CREATE TYPE public.cargos AS ENUM('administrativo', 'vendedor', 'cajero', 'gerente');
 
 ALTER TYPE public.cargo
     OWNER TO postgres;

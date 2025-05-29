@@ -16,7 +16,7 @@ BEGIN
 	RAISE NOTICE 'Cargado exitoso';
 	EXCEPTION
 		WHEN OTHERS THEN
-			RAISE EXCEPTION('no se pudo ejecutar por %', SQLERRM)
+			RAISE EXCEPTION 'no se pudo ejecutar por %', SQLERRM;
 END;
 $BODY$;
 ALTER PROCEDURE public.especialidad_alta(character varying)
@@ -58,6 +58,7 @@ call persona_alta('MATIAS SANTIAGO', 'PRADO', '44658689', '2003-02-14'::date, 'S
 
 select * from persona
 ORDER BY id_persona DESC
+
 CREATE OR REPLACE PROCEDURE public.empleado_alta_interno(IN especialidad_n character varying, IN cargo_n character varying,  sueldo_n numeric(9,2))
 LANGUAGE 'plpgsql'
 AS $BODY$

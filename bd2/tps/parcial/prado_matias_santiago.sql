@@ -75,7 +75,7 @@ CREATE INDEX idx_localidad_localidad ON localidad(localidad)
 /*
 3. para esta consulta propongo la creación de un índice para el campo "id_proveedor" de la tabla compra, puesto que asi logro agrupar todos los medicamentos de determinado proveedor rapidamente
 */
-CREATE INDEX idx_id_proveedor_compra ON compra(id_proveedor)
+CREATE INDEX idx_id_proveedor_compra ON compra(id_proveedor) 
 
 /*
 EJERCICIO 2

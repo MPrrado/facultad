@@ -1,0 +1,4 @@
+si tengo que indexar por una columna con dos valores y por fecha entonces ahí conviene aplicar índice compuesto puesto que afecta realmente a la reducción de tuplas traídas
+
+2c)
+no tengo que hacer un índice para la tabla proveedor porque son pocos y ya se puede filtrar ágilmente
