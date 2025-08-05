@@ -1,0 +1,39 @@
+agregar_objeto_carrito(ob,cr,cantidad_s):producto,carrito,entero → carrito
+    SI (cr.listado_compra.contain(ob) ENTONCES//Agrega el objeto al carrito())
+		SI (ob.obtener_stock() >= (cantidad_s + cr.listado_compra.find(ob).cantidad)) ENTONCES
+            cr.listado_compra.find(ob).cantidad += cantidad_s
+        SINO
+		    mostrar_error() //Muestra un mensaje error de stock insuficiente
+        FIN_SI	
+    SINO
+        SI (ob.obtener_stock() >= cantidad_s) ENTONCES
+            cr.listado_compra.append(ob,cantidad_s)
+        SINO
+		    mostrar_error() //Muestra un mensaje error de stock insuficiente
+FIN SI
+    RETORNA cr
+
+
+respuesta_API_mercado_pago(fac, mp):Factura, MercadoPago → booleano
+    SI(mp.consumirApi(fac)) ENTONCES
+        fac.Pagar('S')
+        RETORNA VERDADERO
+    SINO
+        mp.mensajeError(); //el objeto MercadoPago procesa el error obtenido  del metodo mp.consumirApi(fac)
+        RETORNA FALSO //depende del valor retornado la vista que se mostrara
+    FIN_SI
+    
+contorl_datos_cliente(cliente): Cliente → booleano
+    SI (cliente.ObtenerDni() == NULO v  cliente.ObtenerNombreCompleto() == NULO v cliente.ObtenerDomicilio() == NULO v  cliente.ObtenerCorreo() == NULO) ENTONCES
+        RETORNA FALSO
+    SINO
+        SI(cliente.ObtenerCorreo().find('@')) ENTONCES
+            RETORNA VERDADERO
+        SINO
+            RETORNA FALSO
+        FIN_SI
+    FIN_SI
+
+
+            
+
