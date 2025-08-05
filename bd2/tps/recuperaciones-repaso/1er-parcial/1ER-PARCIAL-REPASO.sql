@@ -80,7 +80,7 @@ EXPLAIN ANALYZE select * from factura where fecha > '2020-01-01'
 propongo un indice secundario para el campo fecha teniendo asi ordenadas las tuplas para acceder rapidamente a disintas fechas
 */
 
-CREATE INDEX idx_fecha ON factura(pagada, fecha) 
+CREATE INDEX idx_fecha ON factura(pagada, fecha) -- no  
 
 --b
 explain analyze select sigla, nombre from obra_social where localidad = 'localidad' and provincia = 'provincia'
@@ -107,27 +107,25 @@ EJERCICIO N° 2: Usuarios y Permisos
 */
 
 --a) Cree el grupo SegParcial
-CREATE ROLE segparcial WITH
+CREATE ROLE "segparcial" WITH
 	NOLOGIN
-	SUPERUSER
+	NOSUPERUSER
 	CREATEDB
-	CREATEROLE
+	NOCREATEROLE
 	INHERIT
 	NOREPLICATION
-	BYPASSRLS
 	CONNECTION LIMIT -1;
 --b) Cree el usuario Apellido_inicial de cada alumno, por ejemplo, si su nombre es Lionel Messi el usuario debe ser “messil”. Agregue el usuario al grupo
 CREATE ROLE pradom WITH
 	LOGIN
-	SUPERUSER
-	CREATEDB
-	CREATEROLE
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
 	INHERIT
 	NOREPLICATION
-	BYPASSRLS
 	CONNECTION LIMIT -1
 	PASSWORD '1234';
-GRANT segparcial TO pradom WITH ADMIN OPTION;
+
 GRANT USAGE ON SCHEMA public TO segparcial
 
 /*
@@ -179,5 +177,5 @@ START TRANSACTION
 DELETE FROM compra c
 WHERE id_medicamento IN (SELECT id_medicamento FROM medicamento INNER JOIN clasificacion USING(id_clasificacion) WHERE clasificacion = 'ANTIVIRAL') AND fecha >= '2020-03-01' AND fecha <= '2022-03-15'
 commit
-
+ 
 
