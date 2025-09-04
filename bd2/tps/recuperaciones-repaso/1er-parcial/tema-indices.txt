@@ -1,7 +1,0 @@
-CREATE INDEX idx_fecha ON factura(pagada, fecha) -- no uso esto debido a que usara el orden alfabetico y entonces me generara una tabla índice mas grande en el orden aa, ab, ac, ad, etc.
-es totalmente mejorusar un índice el campo fecha y parcial con la condición where pagada = 'N' AND fecha >= 2020-etc
-
-para grupos y usuarios, siempre tenemos que dar permisos a los grupos para que solo pongamos los usuarios y los permisos ya los tenga. 
-para los esquemas hay que dar permisos al grupo para usar el esquema si es que lo creamos con otro usuario que no sea el que queremos usar
-
-cuando copiamos la tabla hay que cambiar la integridad referencial para la tabla factura que esta en el esquema facturación, rompiendo las constrain de la tabla paciente del esquema public

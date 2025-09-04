@@ -1,2 +1,0 @@
-validación principalmente en los inserts!!
-es necesario hacer las validaciones como por ejemplo, datos necesarios al ingresar un paciente, ejemplo dni revisar que no es nulo. Entre otras validaciones
