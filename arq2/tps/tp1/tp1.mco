@@ -33,4 +33,5 @@ ST       |
 GOTO     |             
 BRNZ     |             
 SWAP     |             
+ANDI     |ANDI         
 

@@ -21,12 +21,13 @@ SUBI     | I  |r1, i, r2
 OR       | R  |r1, r2, r3
 AND      | R  |r1, r2, r3
 XOR      | R  |r1, r2, r3
-ORI      | R  |r1, r2, r3
+ORI      | I  |r1, i, r3
 LD       | I  |r1, (i)
 ST       | I  |r1,(i)
 GOTO     | J  |j
 BRNZ     | I  |r1, j
 SWAP     | R  |r1, r2
+ANDI     | I  |r1, i, r2
 
 [Microprogrammed Architecture]
 MicroCodeSize=64
