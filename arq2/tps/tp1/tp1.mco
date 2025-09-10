@@ -15,6 +15,15 @@
 000C |XOR   |XOR   |A     |B     |C     |      |      |True  |WF3   |      |      |      |      
 000D |ORI   |OR    |A     |IR    |C     |Word  |      |True  |WF2   |      |      |      |      
 000E |ANDI  |AND   |A     |IR    |C     |Word  |      |True  |WF2   |      |      |      |      
+000F |ST    |S1    |A     |      |MDR   |Word  |      |      |      |      |      |      |      
+0010 |      |S1    |IR    |      |MAR   |Word  |      |      |      |      |      |      |      
+0011 |ST1   |      |      |      |      |      |      |Mbusy |ST1   |WW    |MAR   |MDR   |      
+0012 |      |      |      |      |      |      |      |True  |FETCH |      |      |      |      
+0014 |SWAP  |S1    |A     |      |SWAPTEMP|      |      |      |      |      |      |      |      
+0015 |      |S2    |      |B     |C     |      |      |      |      |      |      |      |      
+0016 |      |S1    |SWAPTEMP|      |C     |      |      |True  |WF2   |      |      |      |WF1   
+0017 |BRNZ  |S1    |A     |      |      |      |      |EQ    |FETCH |      |      |      |      
+0018 |      |ADD   |IR    |PC    |PC    |Word  |      |True  |FETCH |      |      |      |      
 
 [Jump Tables]
 ;Opcode  |Jump Table 1 
@@ -29,9 +38,9 @@ AND      |AND
 XOR      |XOR          
 ORI      |ORI          
 LD       |             
-ST       |             
+ST       |ST           
 GOTO     |             
-BRNZ     |             
-SWAP     |             
+BRNZ     |BRNZ         
+SWAP     |SWAP         
 ANDI     |ANDI         
 
