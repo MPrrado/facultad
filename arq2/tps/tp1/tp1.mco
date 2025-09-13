@@ -19,11 +19,16 @@
 0010 |      |S1    |IR    |      |MAR   |Word  |      |      |      |      |      |      |      
 0011 |ST1   |      |      |      |      |      |      |Mbusy |ST1   |WW    |MAR   |MDR   |      
 0012 |      |      |      |      |      |      |      |True  |FETCH |      |      |      |      
-0014 |SWAP  |S1    |A     |      |SWAPTEMP|      |      |      |      |      |      |      |      
-0015 |      |S2    |      |B     |C     |      |      |      |      |      |      |      |      
-0016 |      |S1    |SWAPTEMP|      |C     |      |      |True  |WF2   |      |      |      |WF1   
-0017 |BRNZ  |S1    |A     |      |      |      |      |EQ    |FETCH |      |      |      |      
-0018 |      |ADD   |IR    |PC    |PC    |Word  |      |True  |FETCH |      |      |      |      
+0013 |SWAP  |S1    |A     |      |SWAPTEMP|      |      |      |      |      |      |      |      
+0014 |      |S2    |      |B     |C     |      |      |      |      |      |      |      |      
+0015 |      |S1    |SWAPTEMP|      |C     |      |      |True  |WF2   |      |      |      |WF1   
+0016 |BRNZ  |S1    |A     |      |      |      |      |EQ    |FETCH |      |      |      |      
+0017 |      |ADD   |IR    |PC    |PC    |Word  |      |True  |FETCH |      |      |      |      
+0018 |LD    |S1    |IR    |      |MAR   |Word  |      |      |      |      |      |      |      
+0019 |LD1   |      |      |      |      |      |      |Mbusy |LD1   |RW    |MAR   |MDR   |      
+001A |      |S1    |MDR   |      |C     |      |      |      |      |      |      |      |      
+001B |      |      |      |      |      |      |      |True  |FETCH |      |      |      |WF1   
+001C |GOTO  |ADD   |IR    |PC    |PC    |Word  |      |True  |FETCH |      |      |      |      
 
 [Jump Tables]
 ;Opcode  |Jump Table 1 
@@ -37,9 +42,9 @@ OR       |OR
 AND      |AND          
 XOR      |XOR          
 ORI      |ORI          
-LD       |             
+LD       |LD           
 ST       |ST           
-GOTO     |             
+GOTO     |GOTO         
 BRNZ     |BRNZ         
 SWAP     |SWAP         
 ANDI     |ANDI         
