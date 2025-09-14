@@ -1,5 +1,5 @@
 [Code Memory Content]
-0000: 41240000 |            | XOR  R1, R1, R1
+0000: 41240000 | AQUI       | XOR  R1, R1, R1
 0004: 42480000 |            | XOR  R2, R2, R2
 0008: 21200005 |            | ADDI R1, 0x000005, R1
 000C: 2240000A |            | ADDI R2, 0x00000A, R2
@@ -13,7 +13,7 @@
 002C: 691FFFF8 |            | BRNZ R1, LOOP
 0030: 5A0000CC |            | ST   R2,(0x0000CC)
 0034: 530000CC |            | LD   R3, (0x0000CC)
-0038: 67FFFFFC | AQUI       | GOTO AQUI
+0038: 67FFFFC4 |            | GOTO AQUI
 003C: 00000000 |            | NOP  
 0040: 00000000 |            | NOP  
 0044: 00000000 |            | NOP  

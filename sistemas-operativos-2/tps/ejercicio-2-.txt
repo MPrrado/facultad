@@ -1,0 +1,80 @@
+
+semaforo s = 1;
+semaforobinario mutex = true;
+semaforobinario delay = false;
+
+void p0                                         
+{
+                                                
+    while(true)                                         
+    {                                           
+        Pb(mutex);                                          
+        s = s – 1;                                          
+        if s < 0 then                                           
+            Vb(mutex);                                          
+            Pb(delay);                                          
+        Vb(mutex);                                          
+        // sc1                                          
+        // sc1                                          
+        // sc1                                          
+
+        Pb(mutex);                                          
+        s = s + 1;                                          
+        if s <= 0 then                                          
+            Vb(delay);                                          
+        else                                            
+            Vb(mutex);                                          
+        // prog1                                            
+        // prog1                                            
+        // prog1                                            
+        // prog1                                            
+        // prog1                                            
+        // prog1                                            
+        // prog1                                            
+    }                                               
+}
+                                            
+void p1
+{
+    
+    while(true)
+    {
+        Pb(mutex);
+        s = s - 1;
+        if s < 0 then
+            Vb(mutex);
+            Pb(delay);
+        Vb(mutex);
+        // sc2
+        // sc2
+        // sc2
+
+        Pb(mutex);
+        s = s + 1;
+        if s <= 0 then
+            Vb(delay);
+        else
+            Vb(mutex);
+        // prog2
+        // prog2
+        // prog2
+        // prog2
+        // prog2
+    }    
+}
+
+
+Pb(mutex);
+s = s – 1;
+if s < 0 then
+Vb(mutex);
+Pb(delay);
+Vb(mutex);
+
+
+Pb(mutex);
+s = s + 1;
+if s <= 0 then
+Vb(delay);
+else
+Vb(mutex);
