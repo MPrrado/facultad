@@ -133,5 +133,51 @@ admin/almacen/Archivos/villalba.odt
 admin/almacen/Archivos/zermoglio.odt
 
 3)
+Secuencia de comandos usada: mkdir practica_comandos; cd practica_comandos; cp -t ./ ../Archivos/*.txt; ls
 
+4)
+Comando sleep 😴
+
+El comando sleep es útil para pausar la ejecución de un script o la terminal por una cantidad específica de tiempo. Es comúnmente usado en scripts de shell para:
+
+    Esperar a que un proceso termine antes de ejecutar el siguiente paso.
+
+    Limitar la tasa de ejecución de un script para evitar sobrecargar el sistema.
+
+    Crear pausas entre comandos para que un usuario pueda leer el resultado en la terminal.
+
+Puedes especificar el tiempo en segundos, minutos, horas o días. Por ejemplo:
+
+    sleep 5s - Pausa por 5 segundos.
+
+    sleep 2m - Pausa por 2 minutos.
+
+Comando echo 🗣️
+
+El comando echo sirve para imprimir texto o variables en la pantalla. Es una herramienta fundamental para:
+
+    Mostrar mensajes al usuario en la terminal.
+
+    Imprimir el valor de una variable en un script.
+
+    Redirigir texto a un archivo.
+
+Por ejemplo:
+
+    echo "Hola, mundo" - Muestra "Hola, mundo" en la terminal.
+
+    echo $USER - Muestra el nombre del usuario actual.
+
+    echo "Texto" > archivo.txt - Escribe la palabra "Texto" en un archivo llamado archivo.txt.
+
+COMANDOS EN PARALELO USADO: sleep 5s; echo 'HOLA' & sleep 10s; echo 'MUNDO' &sleep 15s; echo 'COMO ESTAN? '&
+SALIDA:
+HOLA
+MUNDO
+COMO ESTAN?
+
+6) 
+COMANDOS DE EJECUCION EN PARALELO USADO:
+
+(cp Archivos/*.odt ~) & (mv LibrosyFragmentos/fierro_patron1.txt LibrosyFragmentos/martin_fierro1.txt) & (mkdir ~/instrumentos_musicales) &
 
