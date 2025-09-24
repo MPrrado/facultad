@@ -1,0 +1,137 @@
+
+
+1) 
+	a)COMANDO USADO: echo $PS1
+	salida: \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+
+	b)COMANDO USADO: pwd
+	salida: /home/admin/almacen/tp4
+
+	c)COMANDO USADO: echo $PS1
+	salida: \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+
+	d)COMANDO USADO: cd /home
+
+2)
+d) i)
+COMANDO USADO:
+ls admin/almacen/Archivos/*.txt >> admin/almacen/tp4/solucion.txt
+
+admin/almacen/Archivos/Curioso_impertinente.txt
+admin/almacen/Archivos/La Gran Estrella De África.txt
+admin/almacen/Archivos/municipio de la provincia de entre ríos.txt
+
+ii)
+COMANDO USADO: ls admin/almacen/Archivos/*.jpeg >> admin/almacen/tp4/solucion.txt
+
+admin/almacen/Archivos/algodon.jpeg
+admin/almacen/Archivos/alpaca.jpeg
+admin/almacen/Archivos/angora.jpeg
+admin/almacen/Archivos/azalea.jpeg
+admin/almacen/Archivos/begonia.jpeg
+admin/almacen/Archivos/cachemira.jpeg
+admin/almacen/Archivos/cala.jpeg
+admin/almacen/Archivos/calendula.jpeg
+admin/almacen/Archivos/chifon.jpeg
+admin/almacen/Archivos/clavel.jpeg
+admin/almacen/Archivos/crepé.jpeg
+admin/almacen/Archivos/crisantemo.jpeg
+admin/almacen/Archivos/dalia.jpeg
+admin/almacen/Archivos/franela.jpeg
+admin/almacen/Archivos/gabardina.jpeg
+admin/almacen/Archivos/gardenia.jpeg
+admin/almacen/Archivos/gasa.jpeg
+admin/almacen/Archivos/gladiolo.jpeg
+admin/almacen/Archivos/jacinto.jpeg
+admin/almacen/Archivos/jazmin.jpeg
+admin/almacen/Archivos/lila.jpeg
+admin/almacen/Archivos/lirio.jpeg
+admin/almacen/Archivos/loto.jpeg
+admin/almacen/Archivos/malvon.jpeg
+admin/almacen/Archivos/margarita.jpeg
+admin/almacen/Archivos/orquidea.jpeg
+admin/almacen/Archivos/pensamientos.jpeg
+admin/almacen/Archivos/popelina.jpeg
+admin/almacen/Archivos/raso.jpeg
+admin/almacen/Archivos/rosa.jpeg
+admin/almacen/Archivos/seda.jpeg
+admin/almacen/Archivos/trebol.jpeg
+admin/almacen/Archivos/tulipan.jpeg
+admin/almacen/Archivos/tull.jpeg
+admin/almacen/Archivos/vellon.jpeg
+admin/almacen/Archivos/violeta.jpeg
+admin/almacen/Archivos/zinnia.jpeg
+
+iii)
+COMANDO USADO: ls admin/almacen/Archivos/*.odt >> admin/almacen/tp4/solucion.txt
+
+
+admin/almacen/Archivos/almaraz.odt
+admin/almacen/Archivos/almiron.odt
+admin/almacen/Archivos/beltran.odt
+admin/almacen/Archivos/comelles.odt
+admin/almacen/Archivos/Curioso_impertinente.odt
+admin/almacen/Archivos/dargan.odt
+admin/almacen/Archivos/erazo.odt
+admin/almacen/Archivos/farias.odt
+admin/almacen/Archivos/gomez.odt
+admin/almacen/Archivos/hael.odt
+admin/almacen/Archivos/haro.odt
+admin/almacen/Archivos/heredia.odt
+admin/almacen/Archivos/herrera.odt
+admin/almacen/Archivos/hidalgo.odt
+admin/almacen/Archivos/ibañez.odt
+admin/almacen/Archivos/ibarra.odt
+admin/almacen/Archivos/imbaud.odt
+admin/almacen/Archivos/infante.odt
+admin/almacen/Archivos/ingalina.odt
+admin/almacen/Archivos/juarez.odt
+admin/almacen/Archivos/kira.odt
+admin/almacen/Archivos/labastida.odt
+admin/almacen/Archivos/laguna.odt
+admin/almacen/Archivos/lamas.odt
+admin/almacen/Archivos/langone.odt
+admin/almacen/Archivos/mistral.odt
+admin/almacen/Archivos/montero.odt
+admin/almacen/Archivos/nota22.odt
+admin/almacen/Archivos/notaaldecano.odt
+admin/almacen/Archivos/notafinal.odt
+admin/almacen/Archivos/resumen1.odt
+admin/almacen/Archivos/rojas.odt
+admin/almacen/Archivos/roldan.odt
+admin/almacen/Archivos/romani.odt
+admin/almacen/Archivos/romano.odt
+admin/almacen/Archivos/saade.odt
+admin/almacen/Archivos/saba.odt
+admin/almacen/Archivos/sabeh.odt
+admin/almacen/Archivos/sabelli.odt
+admin/almacen/Archivos/sabra.odt
+admin/almacen/Archivos/sal.odt
+admin/almacen/Archivos/toledo.odt
+admin/almacen/Archivos/tomasini.odt
+admin/almacen/Archivos/toranzo.odt
+admin/almacen/Archivos/torasso.odt
+admin/almacen/Archivos/torres.odt
+admin/almacen/Archivos/toscano.odt
+admin/almacen/Archivos/trujillo.odt
+admin/almacen/Archivos/tusa.odt
+admin/almacen/Archivos/vaca.odt
+admin/almacen/Archivos/valdez.odt
+admin/almacen/Archivos/valdiviezo.odt
+admin/almacen/Archivos/valenzuela.odt
+admin/almacen/Archivos/valle.odt
+admin/almacen/Archivos/valletta.odt
+admin/almacen/Archivos/valperga.odt
+admin/almacen/Archivos/vargas.odt
+admin/almacen/Archivos/venegas.odt
+admin/almacen/Archivos/venzal.odt
+admin/almacen/Archivos/viaña.odt
+admin/almacen/Archivos/videla.odt
+admin/almacen/Archivos/vides.odt
+admin/almacen/Archivos/vigiani.odt
+admin/almacen/Archivos/villalba.odt
+admin/almacen/Archivos/zermoglio.odt
+
+3)
+
+

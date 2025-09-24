@@ -1,0 +1,33 @@
+1. Comandos de Coreutils.
+Descarga los archivos de ejemplo del práctico en el directorio por defecto. Abre una terminal de Debian
+para ejecutar los comandos pertenecientes a Coreutils. Para ver la ayuda de cada uno utiliza la opción
+--help.
+
+Comando ls (listar contenido de directorios):
+
+1.1. Lista todos los archivos y directorios del directorio actual, incluyendo los archivos ocultos.
+
+1.2. Muestra el contenido del directorio /usr/bin en formato largo, con detalles como permisos,
+tamaño y fecha de modificación.
+
+1.3. Muestra el contenido del directorio /etc en formato largo y ordenado por fecha de
+modificación.
+
+1.4. Lista los archivos del directorio actual y muestra el tamaño de los archivos en formato
+legible (KB, MB).
+
+1.5. Lista el contenido del directorio /var/log sin mostrar archivos ocultos
+
+1.1 
+comando usado ls -a, donde -a nos muestra los archivos comenzados con "." y ademas el directorio implicito . y ..
+
+1.2
+comando usado ls -l, que muestra información completa de cada archivo y directorio, incluyendo:
+* permisos
+* hard links
+* usuario propietario
+* grupo propietario
+* tamaño del archivo en bytes
+* 3 columnas: mes, día y año de última modificación
+* nombre del archivo
+

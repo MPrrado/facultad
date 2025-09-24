@@ -1,0 +1,57 @@
+1. Comandos de Coreutils.
+Descarga los archivos de ejemplo del práctico en el directorio por defecto. Abre una terminal de Debian
+para ejecutar los comandos pertenecientes a Coreutils. Para ver la ayuda de cada uno utiliza la opción
+--help.
+
+Comando ls (listar contenido de directorios):
+
+1.1. Lista todos los archivos y directorios del directorio actual, incluyendo los archivos ocultos.
+
+1.2. Muestra el contenido del directorio /usr/bin en formato largo, con detalles como permisos,
+tamaño y fecha de modificación.
+
+1.3. Muestra el contenido del directorio /etc en formato largo y ordenado por fecha de
+modificación.
+
+1.4. Lista los archivos del directorio actual y muestra el tamaño de los archivos en formato
+legible (KB, MB).
+
+1.5. Lista el contenido del directorio /var/log sin mostrar archivos ocultos
+
+1.1 
+comando usado ls -a, donde -a nos muestra los archivos comenzados con "." y ademas el directorio implicito . y ..
+
+1.2
+comando usado ls -l, que muestra información completa de cada archivo y directorio, incluyendo:
+* permisos
+* hard links
+* usuario propietario
+* grupo propietario
+* tamaño del archivo en bytes
+* 3 columnas: mes, día y año de última modificación (si es el año actual, la última columna muestra la hora)
+* nombre del archivo
+
+1.3
+comando usado ls -l -t, que muestra el contenido en formato largo y ordenado por fecha de modificación desde el más reciente.
+
+1.4
+comando usado ls -lh, el cual muestra el contenido en formato largo y ademas el tamaño de los archivos en base 2, legible para el humano
+
+1.5
+comando usado ls, se ven archivos comprimidos e ilegibles.
+
+Comando mkdir (crear directorios) y comando cd (cambiar de directorio):
+
+1.6
+El directorio por defecto en GNU/Linux es "/home" y el símbolo utilizado es ~
+
+1.10
+
+comando utilizado mkdir -p proyecto/src proyecto/bin proyecto/docs, donde -p crea el directorio proyecto si no existe.
+
+1.11
+comando utilizado cd Escritorio/tp3-aso1/ejericio-mkdir/practica/proyecto/docs
+
+1.16
+comando utilizado  cp ~/../../etc/hosts . , copia al directorio actual en donde estoy parado utilizando un path relativo como destino y uno absoluto como origen.
+
