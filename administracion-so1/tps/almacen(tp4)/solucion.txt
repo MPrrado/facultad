@@ -181,3 +181,6 @@ COMANDOS DE EJECUCION EN PARALELO USADO:
 
 (cp Archivos/*.odt ~) & (mv LibrosyFragmentos/fierro_patron1.txt LibrosyFragmentos/martin_fierro1.txt) & (mkdir ~/instrumentos_musicales) &
 
+7)
+COMANDO USADO: mkdir -p ~/instrumentos_musicales/{cuerdas/{guitarra,violin,arpa},vientos/{trompeta,trombon,tuba},percusion/{bombo,redoblante,pandereta}}
+
