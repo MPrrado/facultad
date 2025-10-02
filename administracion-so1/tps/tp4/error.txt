@@ -1,0 +1,2 @@
+bash: cd: noexiste/: No existe el archivo o el directorio
+bash: cd: noexiste2/: No existe el archivo o el directorio

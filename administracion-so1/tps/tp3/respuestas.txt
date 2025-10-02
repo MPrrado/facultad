@@ -55,3 +55,11 @@ comando utilizado cd Escritorio/tp3-aso1/ejericio-mkdir/practica/proyecto/docs
 1.16
 comando utilizado  cp ~/../../etc/hosts . , copia al directorio actual en donde estoy parado utilizando un path relativo como destino y uno absoluto como origen.
 
+--------------------------------------------------------------------------------------
+EJERCICIO 2
+
+comando usado: gcc -c codigo.C
+aquí obtenemos un archivo de extension .o el cual es un archivo del tipo objeto que contiene todas las instrucciones en binario que nuestro procesador entiende y adaptado para la arquitectura que este mismo tenga
+En el archivo se contienen datos, tabla de simbolos (funciones definidas y no definidas) y información de reubicación.
+Este archivo es el resultado de la primera etapa de compilacion de un programa escrito en C. Despues de a este archivo le falta el paso de enlazado (linking).
+

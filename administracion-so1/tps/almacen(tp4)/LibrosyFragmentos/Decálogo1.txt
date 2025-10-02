@@ -1,9 +1,0 @@
-
-
-﻿Decálogo del buen programador
-
-1.- Estudiar.
-2.- Analizar el problema.
-3.- Tener un pensamiento lógico y ordenado.
-4.- No copiar códigos parecidos.  
-5.- Elegir el momento adecuado para trabajar
