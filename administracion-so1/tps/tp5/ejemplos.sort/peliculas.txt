@@ -1,0 +1,201 @@
+ID;nombre;genero;codigo
+1;The Godfather;drama;1067
+2;The Shawshank Redemption;drama;4877
+3;Schindler's List;drama;3050
+4;Pulp Fiction;ficcion;1767
+5;The Dark Knight;accion;2730
+6;Forrest Gump;drama;4919
+7;The Matrix;ficcion;3918
+8;Inception;ficcion;1185
+9;The Lion King;infantil;1826
+10;Back to the Future;ficcion;1816
+11;Jurassic Park;ficcion;4403
+12;Titanic;drama;3204
+13;Star Wars;ficcion;3606
+14;The Lord of the Rings;ficcion;1021
+15;Toy Story;infantil;2288
+16;Frozen;infantil;2344
+17;The Sound of Music;musical;4035
+18;La La Land;musical;2216
+19;Amadeus;drama;1956
+20;Rocky;accion;2974
+21;Die Hard;accion;1147
+22;Terminator 2;accion;1011
+23;Mad Max: Fury Road;accion;1093
+24;The Avengers;accion;3252
+25;Spider-Man;accion;1192
+26;Finding Nemo;infantil;1963
+27;The Incredibles;infantil;2261
+28;Beauty and the Beast;infantil;2545
+29;WALL-E;infantil;2392
+30;The Social Network;drama;4104
+31;The Pursuit of Happyness;drama;3722
+32;Gladiator;accion;2378
+33;Avatar;ficcion;3447
+34;Aliens;ficcion;4239
+35;E.T. the Extra-Terrestrial;ficcion;1418
+36;2001: A Space Odyssey;ficcion;4150
+37;Apollo 13;drama;1523
+38;The Martian;ficcion;2956
+39;Gravity;ficcion;2131
+40;A Beautiful Mind;drama;1935
+41;The Theory of Everything;drama;2630
+42;The Imitation Game;drama;1825
+43;Goodfellas;drama;4734
+44;The Departed;drama;1403
+45;A Star Is Born;musical;3962
+46;Moulin Rouge!;musical;2450
+47;Chicago;musical;1259
+48;Les Misérables;musical;3254
+49;Fahrenheit 9/11;documental;3100
+50;Bowling for Columbine;documental;3116
+51;Super Size Me;documental;3444
+52;March of the Penguins;documental;3822
+53;Planet Earth;documental;4937
+54;Inside Job;documental;1839
+55;Blackfish;documental;1766
+56;Won't You Be My Neighbor?;documental;2554
+57;The Last Dance;documental;2577
+58;Free Solo;documental;3415
+59;Sonic the Hedgehog;infantil;2228
+60;Shrek;infantil;1694
+61;Zootopia;infantil;4982
+62;Moana;infantil;1407
+63;Coco;infantil;3506
+64;Tangled;infantil;3112
+65;Ratatouille;infantil;1226
+66;Brave;infantil;4078
+67;Up;infantil;1733
+68;Cars;infantil;3400
+69;Kung Fu Panda;infantil;4708
+70;Sing;infantil;1735
+71;Despicable Me;infantil;4158
+72;Minions;infantil;4116
+73;The Secret Life of Pets;infantil;4594
+74;Happy Feet;infantil;4233
+75;Ice Age;infantil;4926
+76;Madagascar;infantil;1663
+77;Megamind;infantil;2645
+78;Aladdin;infantil;2360
+79;Mulan;infantil;3756
+80;The Princess and the Frog;infantil;1947
+81;Frozen II;infantil;4499
+82;Big Hero 6;infantil;3206
+83;Bambi;infantil;1444
+84;Snow White and the Seven Dwarfs;infantil;4382
+85;Sleeping Beauty;infantil;4031
+86;Cinderella;infantil;1221
+87;Blackfish;documental;1455
+88;A Star Is Born;musical;3323
+89;Big Hero 6;infantil;3499
+90;Sing;infantil;3373
+91;Mulan;infantil;4963
+92;The Pursuit of Happyness;drama;4425
+93;Ratatouille;infantil;2445
+94;Inception;ficcion;2299
+95;Fahrenheit 9/11;documental;1310
+96;Tangled;infantil;1041
+97;Frozen II;infantil;4354
+98;Cinderella;infantil;3573
+99;Bambi;infantil;1465
+100;Frozen;infantil;3892
+101;Despicable Me;infantil;1932
+102;The Lord of the Rings;ficcion;4319
+103;Forrest Gump;drama;1380
+104;Finding Nemo;infantil;3285
+105;The Matrix;ficcion;4736
+106;Chicago;musical;4567
+107;Avatar;ficcion;2300
+108;The Imitation Game;drama;2372
+109;La La Land;musical;3253
+110;Spider-Man;accion;3307
+111;Free Solo;documental;4602
+112;Goodfellas;drama;3338
+113;Titanic;drama;4491
+114;Inside Job;documental;4146
+115;Snow White and the Seven Dwarfs;infantil;2386
+116;Gladiator;accion;1810
+117;The Dark Knight;accion;3843
+118;E.T. the Extra-Terrestrial;ficcion;1807
+119;The Martian;ficcion;2567
+120;Super Size Me;documental;2791
+121;Moulin Rouge!;musical;3396
+122;Toy Story;infantil;2859
+123;Aladdin;infantil;1084
+124;Planet Earth;documental;1191
+125;Schindler's List;drama;2288
+126;Back to the Future;ficcion;3789
+127;Pulp Fiction;ficcion;1226
+128;Moana;infantil;3824
+129;The Princess and the Frog;infantil;2790
+130;Apollo 13;drama;4274
+131;Madagascar;infantil;1436
+132;Sonic the Hedgehog;infantil;3688
+133;The Last Dance;documental;1814
+134;Mad Max: Fury Road;accion;3855
+135;Happy Feet;infantil;4504
+136;The Social Network;drama;3568
+137;Gravity;ficcion;2362
+138;Amadeus;drama;3861
+139;Up;infantil;4246
+140;Bowling for Columbine;documental;4615
+141;Minions;infantil;1599
+142;2001: A Space Odyssey;ficcion;3423
+143;Rocky;accion;3362
+144;The Godfather;drama;2191
+145;Jurassic Park;ficcion;1196
+146;The Avengers;accion;1889
+147;Die Hard;accion;2959
+148;Terminator 2;accion;2233
+149;Zootopia;infantil;1962
+150;The Lion King;infantil;3182
+151;Megamind;infantil;2218
+152;The Departed;drama;1042
+153;March of the Penguins;documental;3014
+154;Kung Fu Panda;infantil;2683
+155;Beauty and the Beast;infantil;2694
+156;The Incredibles;infantil;4497
+157;The Theory of Everything;drama;1728
+158;Aliens;ficcion;4172
+159;The Shawshank Redemption;drama;1753
+160;Star Wars;ficcion;2314
+161;Cars;infantil;4774
+162;Sleeping Beauty;infantil;2508
+163;Coco;infantil;1095
+164;The Sound of Music;musical;1381
+165;Brave;infantil;2648
+166;WALL-E;infantil;3283
+167;Won't You Be My Neighbor?;documental;4302
+168;Ice Age;infantil;2833
+169;A Beautiful Mind;drama;1437
+170;The Secret Life of Pets;infantil;1758
+171;Les Misérables;musical;3210
+172;Shrek;infantil;2756
+173;Snow White and the Seven Dwarfs;infantil;4659
+174;Blackfish;documental;3088
+175;The Lord of the Rings;ficcion;2488
+176;Avatar;ficcion;2640
+177;Bowling for Columbine;documental;3892
+178;The Godfather;drama;3752
+179;Forrest Gump;drama;3927
+180;The Pursuit of Happyness;drama;2117
+181;Won't You Be My Neighbor?;documental;3854
+182;A Beautiful Mind;drama;4927
+183;Cinderella;infantil;3546
+184;The Incredibles;infantil;1997
+185;Fahrenheit 9/11;documental;4670
+186;Toy Story;infantil;1530
+187;Frozen;infantil;2759
+188;Madagascar;infantil;4895
+189;Chicago;musical;2347
+190;Big Hero 6;infantil;1994
+191;Ice Age;infantil;1129
+192;Aladdin;infantil;2990
+193;March of the Penguins;documental;1117
+194;Jurassic Park;ficcion;2765
+195;Mad Max: Fury Road;accion;4778
+196;Goodfellas;drama;1713
+197;The Princess and the Frog;infantil;1108
+198;Amadeus;drama;2014
+199;A Star Is Born;musical;4338
+200;Rocky;accion;2985

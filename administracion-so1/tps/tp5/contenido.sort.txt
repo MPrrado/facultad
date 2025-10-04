@@ -1,0 +1,7 @@
+alumnos.txt
+distros.duplicados.txt
+distros.num.txt
+distros.txt
+fechas.txt
+numeros.txt
+peliculas.txt

@@ -1,0 +1,103 @@
+1)
+	a)
+	sort ordena las líneas de archivos de texto o datos de la entrada estándar (stdin) y escribe el resultado en la salida estándar (stdout).
+	sintaxis basica: sort [OPCIONES] [ARCHIVO(S)]
+	
+	b)
+	Las reglas por defecto de sort son la ordenación lexicográfica (alfabética/alfanumérica) basada en la configuración regional (locale), que generalmente sigue el valor ASCII de los caracteres.
+	- Ordenación General: Se ordena carácter por carácter de izquierda a derecha.
+	- Letras: Se ordenan de mayúsculas a minúsculas (A-Z luego a-z)
+	- Números: Los números se ordenan alfabéticamente (como cadenas de texto). Por ejemplo, la línea "10" viene antes que "2" porque el carácter '1' precede al '2' en el orden ASCII.
+	Al ejecutar el comando sort sin opciones en los archivos mencionados se ve que se ordena de una manera tal que sigue el orden de un diccionario (lexicográficamente). Por ejemplo en el caso de los numeros los ordena numericamente mal pero lexicográficamente bien, es decir el 100 va antes que el 2 pues el 1 está antes del 2 en la en el código ASCII.
+	
+	c)
+	El criterio por defecto se basa en la ordenación lexicográfica (o alfabética) que utiliza el valor del código ASCII (o la tabla de collation del locale configurado en el sistema).
+
+	El ordenamiento de menor a mayor valor es, típicamente:
+		-Símbolos y Espacios (valores más bajos).
+		-Números (0-9).
+		-Letras Mayúsculas (A-Z).
+		-Letras Minúsculas (a-z) (valores más altos).
+
+	Criterio de Valor Relativo General (ASCII):
+		Numero<Mayuscula<Minuscula
+
+	Ejemplo: 1 se ordena antes que A, y A se ordena antes que a.
+	
+	d)
+	La opcion para ordenar numericamente es '-n. El criterio que utiliza el comando con esta opcion es el orden numerico de menor a mayor.
+	A diferencia del comando sort sin la opcion '-n', no se ordena segun el orden de la tabla ASCII (o el tipo de orden configurado) sino que se ordena de menor a mayor.
+
+	e)
+	La opcion para ordenar de manera inversa es '-r', basicamente ordena de manera inversa respetando el orden lexicográfico (o la forma configurada)
+
+	f)
+	La opcion para ordenar de manera aleatoria es '-R'
+	
+	g)
+	La opción es -k (key).
+	Uso: sort -k N
+	Función: Especifica que el ordenamiento debe realizarse utilizando el contenido del campo N (columna N) de cada línea.
+	Separador por defecto: Los campos se delimitan por espacios o tabulaciones por defecto.
+	
+	h)
+	La opción para eliminar líneas duplicadas es -u (unique).
+	Función: sort imprime solo la primera aparición de cada línea de entrada que sea idéntica a las que le siguen, eliminando las repeticiones
+
+EJERCICIO 2
+
+	a)
+	comando usado: tar -xzvf sort.tar.gz -C ejemplos.sort
+	El directorio de destino (ejemplos.sort) debe existir antes de ejecutar la extracción. Debes crearlo con el comando mkdir ejemplos.sort.
+		
+	b)
+	comando usado: tar -tzf sort.tar.gz > contenido.sort.txt
+	sirve para listar el contenido sin descomprimir, importante el -t!!!
+
+	c)
+	Debes asegurarte de estar en la ruta correcta (ej. el directorio home) para que el comando pueda crear el nuevo archivo (nuevo_sort.tar.bz2) y acceder al directorio ejemplos.sort y su contenido.
+
+EJERCICIO 3
+	
+	a)
+	comando usado :head -n 14 ../tp4/LibrosyFragmentos/AnalectasConfucio.txt  | tail -n 1 | wc -w
+	usamos una combinacion entre head y tail para aislar la linea 14
+	b)
+	comando usado: grep -o -w "Estado" ../tp4/LibrosyFragmentos/AnalectasConfucio.txt | wc -l
+	usamos una combinacion de grep con wc, donde en el grep utilzamos la opcion de que se imprima cada coincidencia, opcion -o, de la palabra "Estado" en una nueva linea para luego simplemente contar las lineas con el comando wc.
+	c) 
+	comando usado: grep ".stado." ../tp4/LibrosyFragmentos/AnalectasConfucio.txt 
+
+EJERCICIO 4
+	
+	a)
+	comando usado:wc -w ../tp4/LibrosyFragmentos/Curioso_impertinente.txt 
+	
+	b)
+	comando usado: grep -wi "AnSeLmo" ../tp4/LibrosyFragmentos/Curioso_impertinente.txt
+	la opcion clave del comando es -i que ignora mayus y minus de la palabra buscada, tanto en el texto y en el parametro de busqueda.
+
+EJERCICIO 5
+	
+	b)
+	comando usado:sort -u ejemplos.sort/alumnos.txt | less
+	
+	c)
+	comando usado: sort -t '@' -k 3 -u ejemplos.sort/alumnos.txt | less
+	aqui previamente hay que tener en cuenta que tipo de delimitador se esta usando dentro del archivo para separar los distintos campos
+	
+EJERCICIO 6
+	
+	a) 
+	comando usado: head -n 5 ejemplos.sort/peliculas.txt
+
+	b)
+	comando usado: awk -F ';' 'NR > 1 {print $3}' ejemplos.sort/peliculas.txt | sort -u
+	aqui en la condicion del awk ponemos NR > 1 para evitarnos el nombre de la columna 'genero'	
+
+	c)
+	comando usado: mkdir peliculas; awk -F';' 'NR > 1 {print "peliculas/" $3}' ejemplos.sort/peliculas.txt | sort -u | xargs mkdir -p
+	
+	d)
+	comando usado: awk -F';' 'NR > 1 {print $3}' ejemplos.sort/peliculas.txt | sort -u | xargs -I variable touch peliculas/variable/variable.txt
+
