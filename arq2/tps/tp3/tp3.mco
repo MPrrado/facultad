@@ -1,0 +1,36 @@
+[Microcode]
+;uAR |Label |ALU   |S1    |S2    |Dest  |ExtIR |Const |JCond |Adr   |Mem   |MAdr  |MDest |Regs
+0000 |FETCH |      |      |      |      |      |      |Mbusy |FETCH |RW    |PC    |IR    |      
+0001 |      |ADD   |PC    |Const |PC    |      |4     |Jump1 |      |      |      |      |RR    
+0002 |SETCPP|S1    |IR    |      |CPP   |Word  |      |True  |FETCH |      |      |      |      
+0003 |SETSP |S1    |IR    |      |SP    |Word  |      |True  |FETCH |      |      |      |      
+0004 |SETLV |S1    |IR    |      |LV    |Word  |      |True  |FETCH |      |      |      |      
+0005 |LV    |S1    |IR    |      |MDR   |Word  |      |      |      |      |      |      |      
+0006 |      |ADD   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+0007 |      |S1    |SP    |      |MAR   |      |      |      |      |      |      |      |      
+0008 |LVW   |      |      |      |      |      |      |Mbusy |LVW   |WW    |MAR   |MDR   |      
+0009 |      |      |      |      |      |      |      |True  |FETCH |      |      |      |      
+
+[Jump Tables]
+;Opcode  |Jump Table 1 
+NOP      |             
+BIPUSH   |             
+POP      |             
+DUP      |             
+IADD     |             
+ISUB     |             
+IAND     |             
+IOR      |             
+IFEQ     |             
+IFLT     |             
+ILOAD    |             
+ISTORE   |             
+GOTO     |             
+BRNZ     |             
+SWAP     |             
+ANDI     |             
+SETCPP   |SETCPP       
+SETSP    |SETSP        
+SETLV    |SETLV        
+LV       |LV           
+
