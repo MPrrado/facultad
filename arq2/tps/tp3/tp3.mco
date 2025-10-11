@@ -6,29 +6,48 @@
 0003 |SETSP |S1    |IR    |      |SP    |Word  |      |True  |FETCH |      |      |      |      
 0004 |SETLV |S1    |IR    |      |LV    |Word  |      |True  |FETCH |      |      |      |      
 0005 |LV    |S1    |IR    |      |MDR   |Word  |      |      |      |      |      |      |      
-0006 |      |ADD   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
-0007 |      |S1    |SP    |      |MAR   |      |      |      |      |      |      |      |      
-0008 |LVW   |      |      |      |      |      |      |Mbusy |LVW   |WW    |MAR   |MDR   |      
-0009 |      |      |      |      |      |      |      |True  |FETCH |      |      |      |      
+0006 |ADDSPW|ADD   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+0007 |      |S1    |SP    |      |MAR   |Word  |      |      |      |      |      |      |      
+0008 |      |S1    |SP    |      |TOS   |Word  |      |      |      |      |      |      |      
+0009 |WM    |      |      |      |      |      |      |Mbusy |WM    |WW    |MAR   |MDR   |      
+000A |      |      |      |      |      |      |      |True  |FETCH |      |      |      |      
+000B |GOTO  |ADD   |IR    |PC    |PC    |Word  |      |True  |FETCH |      |      |      |      
+000C |BIPUSH|S1    |IR    |      |MDR   |Word  |      |True  |ADDSPW|      |      |      |      
+000D |ILOAD |S1    |IR    |      |MAR   |Word  |      |      |      |      |      |      |      
+000E |ADDSPR|ADD   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+000F |      |S1    |SP    |      |TOS   |Word  |      |      |      |      |      |      |      
+0010 |RM    |      |      |      |      |      |      |Mbusy |RM    |RW    |MAR   |MDR   |      
+0011 |      |S1    |SP    |      |MAR   |Word  |      |True  |WM    |      |      |      |      
+0012 |IADD  |S1    |TOS   |      |MAR   |Word  |      |      |      |      |      |      |      
+0013 |RMADD1|      |      |      |      |      |      |Mbusy |RMADD1|RW    |MAR   |MDR   |      
+0014 |      |SUB   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+0015 |      |S1    |SP    |      |TOS   |Word  |      |      |      |      |      |      |      
+0016 |      |S1    |SP    |      |MAR   |Word  |      |      |      |      |      |      |      
+0017 |RMADD2|      |      |      |      |      |      |Mbusy |RMADD2|RW    |MAR   |IR    |      
+0018 |      |ADD   |MDR   |IR    |MDR   |Word  |      |True  |WM    |      |      |      |      
+0019 |ISTORE|S1    |SP    |      |MAR   |Word  |      |      |      |      |      |      |      
+001A |RMISTORE|      |      |      |      |      |      |Mbusy |RMISTORE|RW    |MAR   |MDR   |      
+001B |      |SUB   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+001C |      |S1    |SP    |      |TOS   |Word  |      |      |      |      |      |      |      
+001D |      |S1    |IR    |      |MAR   |Word  |      |      |      |      |      |      |      
+001E |WMISTORE|      |      |      |      |      |      |Mbusy |WMISTORE|WW    |MAR   |MDR   |      
+001F |      |      |      |      |      |      |      |True  |FETCH |      |      |      |      
 
 [Jump Tables]
 ;Opcode  |Jump Table 1 
 NOP      |             
-BIPUSH   |             
+BIPUSH   |BIPUSH       
 POP      |             
 DUP      |             
-IADD     |             
+IADD     |IADD         
 ISUB     |             
 IAND     |             
 IOR      |             
 IFEQ     |             
 IFLT     |             
-ILOAD    |             
-ISTORE   |             
-GOTO     |             
-BRNZ     |             
-SWAP     |             
-ANDI     |             
+ILOAD    |ILOAD        
+ISTORE   |ISTORE       
+GOTO     |GOTO         
 SETCPP   |SETCPP       
 SETSP    |SETSP        
 SETLV    |SETLV        
