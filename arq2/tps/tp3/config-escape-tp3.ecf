@@ -31,7 +31,7 @@ SETLV    | I  |i
 LV       | I  |i
 
 [Microprogrammed Architecture]
-MicroCodeSize=64
+MicroCodeSize=128
 ConstantSize=16
 NumberOfJumpTables=1
 RRFormalA=1

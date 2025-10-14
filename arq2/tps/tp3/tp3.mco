@@ -28,22 +28,58 @@
 0019 |ISTORE|S1    |SP    |      |MAR   |Word  |      |      |      |      |      |      |      
 001A |RMISTORE|      |      |      |      |      |      |Mbusy |RMISTORE|RW    |MAR   |MDR   |      
 001B |      |SUB   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
-001C |      |S1    |SP    |      |TOS   |Word  |      |      |      |      |      |      |      
+001C |      |S1    |SP    |      |TOS   |      |      |      |      |      |      |      |      
 001D |      |S1    |IR    |      |MAR   |Word  |      |      |      |      |      |      |      
 001E |WMISTORE|      |      |      |      |      |      |Mbusy |WMISTORE|WW    |MAR   |MDR   |      
 001F |      |      |      |      |      |      |      |True  |FETCH |      |      |      |      
+0020 |IOR   |S1    |TOS   |      |MAR   |      |      |      |      |      |      |      |      
+0021 |RMIOR1|      |      |      |      |      |      |Mbusy |RMIOR1|RW    |MAR   |MDR   |      
+0022 |      |SUB   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+0023 |      |S1    |SP    |      |TOS   |      |      |      |      |      |      |      |      
+0024 |      |S1    |SP    |      |MAR   |      |      |      |      |      |      |      |      
+0025 |RMIOR2|      |      |      |      |      |      |Mbusy |RMIOR2|RW    |MAR   |IR    |      
+0026 |      |OR    |MDR   |IR    |MDR   |      |      |True  |WM    |      |      |      |      
+0027 |DUP   |S1    |TOS   |      |MAR   |      |      |      |      |      |      |      |      
+0028 |RMDUP |      |      |      |      |      |      |Mbusy |RMDUP |RW    |MAR   |MDR   |      
+0029 |      |ADD   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+002A |      |S1    |SP    |      |TOS   |      |      |      |      |      |      |      |      
+002B |      |S1    |SP    |      |MAR   |      |      |True  |WM    |      |      |      |      
+002C |IAND  |S1    |TOS   |      |MAR   |      |      |      |      |      |      |      |      
+002D |RMIAND1|      |      |      |      |      |      |Mbusy |RMIAND1|RW    |MAR   |MDR   |      
+002E |      |SUB   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+002F |      |S1    |SP    |      |TOS   |      |      |      |      |      |      |      |      
+0030 |      |S1    |SP    |      |MAR   |      |      |      |      |      |      |      |      
+0031 |RMIAND2|      |      |      |      |      |      |Mbusy |RMIAND2|RW    |MAR   |IR    |      
+0032 |      |AND   |MDR   |IR    |MDR   |      |      |True  |WM    |      |      |      |      
+0033 |ISUB  |S1    |TOS   |      |MAR   |      |      |      |      |      |      |      |      
+0034 |RMSUB1|      |      |      |      |      |      |Mbusy |RMSUB1|RW    |MAR   |MDR   |      
+0035 |      |SUB   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+0036 |      |S1    |SP    |      |TOS   |      |      |      |      |      |      |      |      
+0037 |      |S1    |SP    |      |MAR   |      |      |      |      |      |      |      |      
+0038 |RMSUB2|      |      |      |      |      |      |Mbusy |RMSUB2|RW    |MAR   |IR    |      
+0039 |      |SUB   |MDR   |IR    |MDR   |      |      |      |      |      |      |      |      
+003A |      |      |      |      |      |      |      |True  |WM    |      |      |      |      
+003B |IFEQ  |S1    |TOS   |      |MDR   |      |      |      |      |      |      |      |      
+003C |      |SUB   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+003D |      |S1    |SP    |      |TOS   |      |      |      |      |      |      |      |      
+003E |RMEQ  |      |      |      |      |      |      |Mbusy |RMEQ  |RW    |MAR   |MDR   |      
+003F |      |S1    |MDR   |      |      |      |      |EQ    |EQ    |      |      |      |      
+0040 |EQ    |ADD   |PC    |IR    |PC    |Word  |      |      |      |      |      |      |      
+0041 |      |      |      |      |      |      |      |True  |FETCH |      |      |      |      
+006D |POP   |SUB   |SP    |Const |SP    |Word  |4     |      |      |      |      |      |      
+006E |      |S1    |SP    |      |TOS   |      |      |      |      |      |      |      |      
 
 [Jump Tables]
 ;Opcode  |Jump Table 1 
 NOP      |             
 BIPUSH   |BIPUSH       
 POP      |             
-DUP      |             
+DUP      |DUP          
 IADD     |IADD         
-ISUB     |             
-IAND     |             
-IOR      |             
-IFEQ     |             
+ISUB     |ISUB         
+IAND     |IAND         
+IOR      |IOR          
+IFEQ     |IFEQ         
 IFLT     |             
 ILOAD    |ILOAD        
 ISTORE   |ISTORE       
