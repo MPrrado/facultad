@@ -43,6 +43,16 @@ namespace espacioTienda
             throw new InvalidOperationException("ERROR, NO SE PUDO ELIMINAR PORQUE NO SE ENCONTRO EL PRODUCTO: " + nombre);
         }
 
+        public bool aplicarDescuento(string nombreProducto, double porcentaje)
+        {
+            if(porcentaje < 0 || porcentaje > 100) //chequeamos que el porcentaje este entre 0 y 100
+            {
+                throw new InvalidOperationException("ERROR, EL PORCENTAJE DEBE ESTAR ENTRE 0 Y 100");
+            }
+            Producto producto = this.buscarProducto(nombreProducto); //si no lo encuentra tira excepcion
+            return producto.cambiarPrecio(producto.Precio - (producto.Precio * porcentaje / 100));
+        }
+
 
     }
 }

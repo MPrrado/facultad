@@ -9,9 +9,11 @@ namespace espacioProducto
         private double precio;
         private string categoria;
 
-        public string Nombre { get => nombre; }
-        public double Precio { get => precio; }
-        public string Categoria { get => categoria; }
+        //necesitamos que tanto las propiedaes como los metodos que usara el mock para simular el comportamiento sean virtuales
+        //para que Moq pueda sobreescribirlos y definir su propio comportamiento
+        public virtual string Nombre { get => nombre; }
+        public virtual double Precio { get => precio; }
+        public virtual string Categoria { get => categoria; }
 
         public Producto()
         {
@@ -24,7 +26,7 @@ namespace espacioProducto
             this.categoria = categoria;
         }
 
-        public bool cambiarPrecio(double precio)
+        public virtual bool cambiarPrecio(double precio)
         {
             if (precio < 0)
             {
