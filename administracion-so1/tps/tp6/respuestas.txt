@@ -1,0 +1,71 @@
+EJERCICIO 1)
+	a)
+	Investiga cómo listar todos los sistemas de archivos montados en el sistema y las opciones de montaje activas. La salida debe mostrar el dispositivo, el punto de montaje y el tipo de sistema de archivos de cada uno
+	
+	El comando usado para este caso es mount
+
+	b)Busca un comando que permita ver esta información sin parámetros adicionales.
+
+	Para este caso vale el mismo comando mount, puesto que no hace falta usar opciones para que funcione y nos muestre toda la informacion, punto de montaje, tipo de sistema de archivo, espacio disponible, etc
+
+	c)Explora cómo obtener un resumen del uso del espacio en disco para cada sistema de archivos montado. Busca una opción que te permita ver el tamaño de cada sistema de archivos y la cantidad de espacio disponible en un formato legible.
+	
+	Para este caso el comando adecuado es df -h	
+	
+	d) nvestiga un comando que te permita ver los dispositivos de almacenamiento en tu sistema y cómo están organizados, incluyendo particiones y puntos de montaje. Debes identificar un comando que represente los dispositivos en una estructura jerárquica.
+	
+	Para esto usamos el comando lbslk
+	
+	e)Encuentra una herramienta que te permita identificar el tipo de sistema de archivos de cada partición y su UUID. Este comando debe mostrar información detallada sobre cada dispositivo de almacenamiento, incluyendo el tipo de sistema de archivos, etiquetas y otros identificadores.
+	Para este caso encontre el comando blkid que tengo que ejecutarlo con sudo para que me traiga todos los dispositivos con sus respectivas particiones e informacion
+	No utilizo el comando lsblk -f porque se me tilda todo y queda como si estuviera imprimiendo puro espacios en blanco/tabs
+
+	f)Observaste diferencias entre los comandos? ¿Alguno de ellos mostró más detalles que los demás? ¿Qué limitaciones o dificultades encontraste al utilizar estos comandos?
+	
+	Diferencias y Detalles
+
+	mount: Es el único comando que muestra las opciones de montaje detalladas (como rw, ro, relatime, errors=remount-ro, etc.). Su especialidad es mostrar cómo está montado un sistema de archivos, pero tiende a ser "ruidoso", ya que también lista muchos sistemas de archivos virtuales (como tmpfs, cgroup, procfs) que no son discos físicos.
+
+	df -h: Es el único comando que se especializa en el uso de espacio en disco. Su detalle principal es mostrar el tamaño total, el espacio usado y el espacio disponible en un formato legible (-h). No muestra opciones de montaje (más allá de rw/ro implícito) ni UUIDs.
+
+	lsblk: Su gran fortaleza es mostrar la jerarquía de dispositivos. Es el único que muestra claramente qué particiones (sda1, sda2) pertenecen a qué disco (sda). Es excelente para visualizar la estructura del hardware y, a diferencia de mount y df, también lista dispositivos y particiones que no están montados.
+
+	lsblk -f y blkid: Estos comandos se especializan en los identificadores del sistema de archivos. Son los únicos que muestran de forma fiable el UUID y la LABEL (etiqueta) de las particiones. lsblk -f es muy útil porque combina la jerarquía de lsblk con los detalles de identificación.
+	
+	Limitaciones y Dificultades
+
+	Comandos que se "Cuelgan" (Hang): Esta es la dificultad más común y la que experimentaste. Los comandos lsblk -f y sudo blkid deben sondear (probar) activamente cada dispositivo de bloque para leer sus metadatos (UUID, tipo, etc.). Si un dispositivo está defectuoso, no responde o (muy comúnmente) un lector de tarjetas SD está vacío, el comando puede quedarse "congelado" esperando una respuesta que nunca llega.
+
+	Necesidad de sudo: Para obtener una lista completa y precisa de los UUIDs y tipos de sistemas de archivos, comandos como blkid a menudo requieren privilegios de administrador (sudo). Si se ejecutan como usuario normal, pueden omitir dispositivos o mostrar información incompleta.
+
+	Ruido en mount y df: Estos comandos muestran todos los sistemas de archivos montados, incluyendo los virtuales (ej. /dev/loop0, tmpfs, cgroup2). Esto puede dificultar encontrar rápidamente los discos físicos reales (como /dev/sda1) en la lista.
+
+EJERCICIO 2
+
+	a) Explora el directorio /bin. Identifica la ubicación de los comandos básicos ls, cp, mv. ¿Qué observas de este directorio? ¿Por qué los comandos básicos están en este directorio y no en /sbin?
+	En /bin vemos binarios ejecutables por la mayoria de los usuarios comunes, es por esto que los comandos mas usados como ls, cp, mv, etc estan aquí y no en /sbin puesto que esta última es para binarios que son importantes para el sistemas para su administracion y funcionamiento, los cuales solamente pueden ser accedidos por usuarios con permisos elevados o directamente solo el usuario root.
+	
+	b) Navega el directorio /boot e identifica el archivo de configuración del gestor de arranque GRUB. Describe brevemente su contenido
+
+	Descripción del contenido: Este archivo no debe editarse manualmente, ya que se genera automáticamente (por ejemplo, con el comando update-grub). Su contenido es un script que le dice a GRUB qué hacer cuando arranca la computadora. Define cosas como:
+	El menú de arranque que ves (con la lista de sistemas operativos).
+	El tiempo de espera (timeout) antes de arrancar el sistema por defecto.
+	Las entradas del menú (menuentry), que le indican al kernel de Linux qué partición usar como raíz (root=...) y otros parámetros de arranque.
+	
+	c)Visualiza el contenido de /dev. Lista todos los discos, luego lista todas las terminales. ¿Cómo puedes distinguir qué tipos de dispositivos son?
+
+	Con el comando ls -l /dev/sd*  obtenemos todos los discos los cuales identificamos a traves del primer caracter de la columna de permisos ('b' para los discos puesto que son dispositivos de bloques) y para encontrar las terminales ls -l /dev/tty* y distinguimos de la misma manera que los discos con la primera letra de la columna de permisos ('c' dispositivo de caracter, por defecto terminales)
+	
+	d)En el directorio personal del usuario, visualiza el contenido de los archivos .bashrc, .profile y .config. ¿Para qué sirve cada uno de estos archivos?
+
+	¿Para qué sirve cada uno? La teoría provista no describe estos archivos, así que uso mi conocimiento general:
+	.bashrc: Es el archivo más común. Se ejecuta cada vez que abres una nueva terminal interactiva (un non-login shell). Aquí es donde pones tus personalizaciones, como:
+	        - Alias: Atajos para comandos largos (ej. alias ll='ls -l').
+	       	- Variables de Entorno: Variables que solo necesitas en la terminal.
+		- Personalización del Prompt: Cambiar cómo se ve tu prompt (la línea donde escribes).
+	.profile: Es un archivo más antiguo y fundamental. Se ejecuta solo una vez, cuando inicias sesión en el sistema (login shell), por ejemplo, al entrar en modo texto (TTY) o a veces por SSH. Su propósito principal es establecer variables de entorno globales para toda tu sesión (como PATH, LANG, etc.) que todos los programas que lances deben heredar.
+	.config (Directorio): ¡Ojo! Este no es un archivo, sino un directorio. Es un estándar moderno para que las aplicaciones dejen de crear archivos "punto" (como .vimrc, .nano_history) que desordenan tu directorio home. En su lugar, las aplicaciones guardan sus configuraciones dentro de ~/.config/. Por ejemplo, htop guarda su config en ~/.config/htop/htoprc.
+
+EJERCICIO 3)
+	
+	a) 

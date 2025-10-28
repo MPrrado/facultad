@@ -1,0 +1,11 @@
+EJERCICIO 1)
+	a)
+	Investiga cómo listar todos los sistemas de archivos montados en el sistema y las opciones de montaje activas. La salida debe mostrar el dispositivo, el punto de montaje y el tipo de sistema de archivos de cada uno
+	
+	El comando usado para este caso es mount
+
+	b)
+	Para este caso vale el mismo comando mount, puesto que no hace falta usar opciones para que funcione y nos muestre toda la informacion, punto de montaje, tipo de sistema de archivo, espacio disponible, etc
+
+	c)
+	Para ver esta informaciones
