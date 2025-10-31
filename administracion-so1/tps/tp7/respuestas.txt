@@ -1,0 +1,62 @@
+1) 
+
+a) Para ejecutar adduser se necesitan privilegios de administrador. Y al 
+utilizar sudo, permite crear el usuario de forma interactiva junto con 
+lo necesario para su uso.
+
+b) Se verifica el usuario con cat /etc/passwd | grep swilson. El ID de 
+grupo asignado es 1003.
+
+2) La diferencia es que solo crea el usuario agregando una linea en el archivo /etc/passwd sin agregar en el directorio /home su espacio de trabajo, y sin una contrasena. 
+   
+b) Con el comando anterior: Ajackson:x:1007:1007:Alan Jackson:/home/Ajackson:/bin/sh
+Si bien, al agregar la linea en passwd en los campos de directorio y el interprete de comandos le agrega los que estan por defecto, no los crea realmente ni los usa. La finalidad de useradd es poder ser mas flexible y poder darle una ruta personalizada al home o un bash distinto.
+Otra diferencia es que si no se agrega la opcion -c no podemos agregar el nombre completo u otros comentarios de manera adicional y opcional.
+
+c) Los comandos que se pueden usar para realizar esa tarea son usermod para los atributos generales del usuario, passwd <nombre_usuario> para especificamente modificar la contrasena y chfn <nombre_usuario> para la info adicional.
+ 
+3) groupadd progressive, groupadd country
+
+a) cat /etc/group, aqui estan todos los grupos
+
+b) Ya estan verficados
+
+aparsons:x:1004:
+rwaters:x:1005:
+Zbrown:x:1006:
+Ajackson:x:1007:
+jbuffett:x:1008:
+
+c y d) Para agregar usuarios a un grupo se ejecuta por cada uno el comando usermod -aG <grupo> <usuario>. Se usa -a de appends y el G de group
+ 
+e) cat /etc/group
+
+4)
+
+a) su (Substitute User), con este se cambia  -- winssp
+
+b) En el directorio activo previo al cambio de usuario.
+
+c) Al usar ls lista todo, porque tenemos permisos de lectura.
+
+d) Al usar touch archivito.arc no me permite crearlo, por no tener permisos de escritura.
+
+e) Primero hay que cambiar el propietario del recurso por el grupo, y segundo darle los permisos tanto al grupo como a los usuarios del grupo.
+chown :progressive carpetaSucia/
+chmod u=rwx,g=rwx carpetaSucia/
+
+f) Listo
+
+g) no habia que dar permisos de ejecucion ni de escritura en el e)
+
+5) 
+
+a) Al usuario si lo elimina
+
+b) No lo elimina, hay que eliminarlo manualmente o con el argumento --remove-home
+
+c) No se puede, 
+
+
+
+

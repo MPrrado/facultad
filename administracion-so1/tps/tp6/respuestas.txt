@@ -61,11 +61,26 @@ EJERCICIO 2
 	¿Para qué sirve cada uno? La teoría provista no describe estos archivos, así que uso mi conocimiento general:
 	.bashrc: Es el archivo más común. Se ejecuta cada vez que abres una nueva terminal interactiva (un non-login shell). Aquí es donde pones tus personalizaciones, como:
 	        - Alias: Atajos para comandos largos (ej. alias ll='ls -l').
-	       	- Variables de Entorno: Variables que solo necesitas en la terminal.
+		- Variables de Entorno: Variables que solo necesitas en la terminal.
 		- Personalización del Prompt: Cambiar cómo se ve tu prompt (la línea donde escribes).
 	.profile: Es un archivo más antiguo y fundamental. Se ejecuta solo una vez, cuando inicias sesión en el sistema (login shell), por ejemplo, al entrar en modo texto (TTY) o a veces por SSH. Su propósito principal es establecer variables de entorno globales para toda tu sesión (como PATH, LANG, etc.) que todos los programas que lances deben heredar.
 	.config (Directorio): ¡Ojo! Este no es un archivo, sino un directorio. Es un estándar moderno para que las aplicaciones dejen de crear archivos "punto" (como .vimrc, .nano_history) que desordenan tu directorio home. En su lugar, las aplicaciones guardan sus configuraciones dentro de ~/.config/. Por ejemplo, htop guarda su config en ~/.config/htop/htoprc.
 
 EJERCICIO 3)
 	
-	a) 
+	a) con el comando file /dev/sd*  y el comando file /dev/tty* veo todos los discos y las terminales respectivamente.
+
+	b) la diferencia principal entre ver con el comando file o el comando ls -l es que cuando ejecutamos el primero vemos especialmente el nombre y el tipo de dispositivo que es, mientras que con el 2do comando lo que vemos es una informacion mas detallada a nivel general, como ser permisos, usuario propietario, grupo propietario, fecha de creacion, etc.
+
+	i) cuando borramos el ~/dir1/dir2/dir3/archivo3.txt y queremos ver el contenido del archivo desde su enlace simbolico no podemos porque no sale el siguiente error:
+	cat: /home/mprrado/archivo3.txt: No existe el archivo o el directorio
+	basicamente como borramos la entrada del file system ya no mantiene la referencia al archivo por lo que el enlace simbolico quedó inutilizable
+	
+	Si posible recuperar ese enlace simbolico, simplemente hay que hacer un hardlink a la ubicacion original donde estaba el archivo3.txt y listo. Este hardlink mantiene el inodo que tenia el archivo original, puesto que para que un archivo se pierda en su totalidad hay que eliminar todos los hardlink referidos al mismo
+
+	k) cuando eliminamos el archivo ~/dir1/dir2/dir3/archivo3.txt y luego creamos otro con el mismo nombre en el mismo lugar y ademas insertamos la linea que nos pide el enunciado lo que tenemos es directamente otro archivo con otro inodo distinto al de los hardlinks, por lo que los datos que teniamos en el antiguo archivo3.txt (las lineas que fuimos agregando) se perdieron y ahora solo tenemos la linea nueva que agregamos.
+
+EJERCICIO 5)
+	
+	a)
+	
