@@ -1,0 +1,3 @@
+TRABAJO PRACTICO CACHE
+
+para solucionar el problema del arreglo que esta en una porción contigua de memoria, que al final termina en una sola linea de cache, lo que tenemos que hacer es básicamente hacer un PADDING a las palabras dentro de la memoria con un tamaño igual al de una linea en la cache, por ejemplo si tenemos que cada linea dentro de la cache es de 64bytes entonces cuando declaramos un int le decimos que tenga un paddin o alinee a 64 bytes, entonces tendremos 4bytes de entero y 60 bytes de padding
