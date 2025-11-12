@@ -13,16 +13,22 @@ clear
 	#i) Con un archivo que no existe y que el script lo cree.
 	#ii) Con el archivo creado
 
+#variables auxiliares
+opcion=''
+
 #a) Pedimos al usuario su nombre y la ruta de un archivo.
-read -p "Ingresesu nombre: " nombre
+read -p "Ingrese su nombre: " nombre
 read -p "Ingrese la ruta del archivo: " archivo
-# archivo="/home/MPrrado/ejercicio13/test3"
+# archivo="/home/MPrrado/ejercicio13/test3" #nos sirve para no ingresar la ruta del archivo siempre
 
 directorioArchivo=$(dirname $archivo) #obtenemos el directorio hasta antes de la ultima /
 nombreArchivo=$(basename $archivo) #obtenemos el ultimo elemento despues de la ultima / eso es lo que considera como archivo
 
 #b) Verificamos la existencia del archivo. Si no existe preguntamos si quiere crearlo
 while true; do
+	if [[ $opcion =~ [s|S] ]]; then #sirve para que pida ingresar un nuevo nombre en el caso que decida seguir agregando contraseñas
+		read -p "Ingrese su nombre: " nombre
+	fi
 	if  [[ ! -e $archivo ]]; then
 		while true; do
 			read -p "Desea crear el archivo (s/n): " opcion
@@ -66,11 +72,11 @@ while true; do
 	fi
 	sleep 5
 	clear
-	read -sp "Ingrese su contrseña: " pass 
+	read -sp "Ingrese su contraseña: " pass 
 	echo "$nombre;$pass" >> $archivo
 	while true; do
 			echo -e '\n'
-			read -ep "Desea continuar agregando contraseñas (s/n): " opcion
+			read -p "Desea continuar agregando contraseñas (s/n): " opcion
 			if [[ $opcion =~ ^[s|n|S|N]$ ]]; then
 				break
 			fi
