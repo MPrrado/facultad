@@ -1,4 +1,4 @@
-    #!/bin/bash
+#!/bin/bash
 
 # Crear carpeta principal "resources"
 mkdir -p resources
