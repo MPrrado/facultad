@@ -1,0 +1,52 @@
+2.- A la implementación del ejercicio anterior agregar un proceso cliente, el cual solicita al encargado una pizza ¿Cambia la implementación del proceso encargado? Justifique y en caso afirmativo, escriba un nuevo pseudocódigo para el mismo.
+Aclaración: para las implementaciones use la primitivas send y receive bloqueantes y con nombramiento explícito.
+
+PROCESO cocinero
+
+do hasta 1pm
+    pizza = obtenerPizza();
+    send(mesada, &pizza);
+end do
+
+PROCESO mesadaManager
+
+mesada[] <- arreglo de 10 pizzas
+contadorPizzas <- 0
+
+do hasta 1pm
+    if contadorPizzas = 0 then
+        recive(cocinero, &pizza)
+        mesada[contadorPizzas] <- pizza
+        contadorPizzas <- contadorPizzas + 1
+    else if contadorPizzas = 10 then
+        recive(encargado, &"necesito pizza")
+        pizza <- mesada[contadorPizzas - 1]
+        contadorPizzas <- contadorPizzas - 1
+        send(encargado, &pizza)
+    else
+        recive(cocinero, &pizza)
+        mesada[contadorPizzas] <- pizza
+        contadorPizzas <- contadorPizzas + 1
+        recive(encargado, &"necesito pizza")
+        pizza <- mesada[contadorPizzas - 1] 
+        contadorPizzas <- contadorPizzas - 1
+        send(encargado, &pizza)
+    end if
+end do
+
+PROCESO encargado //este cambia para esperar recibir la solicitud del cliente
+
+do hasta 1pm
+    recive(cliente, &"quiero una pizza")
+    send(mesadaManager, &"necesito pizza")
+    receive(mesadaManager, &pizza)
+    vender(pizza)
+end do
+
+PROCESO cliente
+
+do hasta 1pm
+    send(encargado, &"quiero una pizza")
+    receive(encargado, &pizza)
+    consumir(pizza)
+end do

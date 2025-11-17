@@ -1,0 +1,45 @@
+1.- En un local de reparto de pizzas a domicilio trabajan un cocinero y un encargado. El cocinero produce pizzas permanentemente, mientras que el encargado se ocupa del despacho de estas.
+Escriba un pseudocódigo que implemente la sincronización entre los procesos cocinero y encargado, utilizando las primitivas send y receive. Considere las siguientes condiciones:
+    El cocinero entrega las pizzas al encargado en una mesada con capacidad para 10 pizzas. Una vez que se llena la mesada, el cocinero espera hasta tener lugar.
+    El encargado toma una pizza de la mesada, la empaqueta y la despacha.
+
+PROCESO cocinero
+
+do hasta 1pm
+    pizza = obtenerPizza();
+    send(mesada, &pizza);
+end do
+
+PROCESO mesadaManager
+
+mesada[] <- arreglo de 10 pizzas
+contadorPizzas <- 0
+
+do hasta 1pm
+    if contadorPizzas = 0 then
+        recive(cocinero, &pizza)
+        mesada[contadorPizzas] <- pizza
+        contadorPizzas <- contadorPizzas + 1
+    else if contadorPizzas = 10 then
+        recive(encargado, &"necesito pizza")
+        pizza <- mesada[contadorPizzas - 1]
+        contadorPizzas <- contadorPizzas - 1
+        send(encargado, &pizza)
+    else
+        recive(cocinero, &pizza)
+        mesada[contadorPizzas] <- pizza
+        contadorPizzas <- contadorPizzas + 1
+        recive(encargado, &"necesito pizza")
+        pizza <- mesada[contadorPizzas - 1] 
+        contadorPizzas <- contadorPizzas - 1
+        send(encargado, &pizza)
+    end if
+end do
+
+PROCESO encargado
+
+do hasta 1pm
+    send(mesadaManager, &"necesito pizza")
+    receive(mesadaManager, &pizza)
+    vender(pizza)
+end do
