@@ -1,0 +1,96 @@
+COMUNICACIONES 2
+TRABAJO PRACTICO 10
+SEGURIDAD
+
+CASO 1:
+
+iptables -F //borra todas las reglas de una cadena, si no se establece una es para todas las cadenas
+
+iptables -X //borra todas las candenas
+
+iptables -Z //pone a cero todos los contadores de paquetes y bytes
+
+iptables -P INPUT ACCEPT //estable que la politica de INPUT se aceptan todas
+
+iptables -P OUTPUT ACCEPT //establece que la politica OUTPUT se aceptan todas
+
+iptables -P FORWARD ACCEPT //establece que la politica FORWARD se aceptan todas
+
+iptables -t nat -P PREROUTING ACCEPT // en la tabla nat permite que la politica de PREROUTING sea aceptada
+
+iptables -t nat -P POSTROUTING ACCEPT //en la tabla nat permite que la politica de POSTROUTING sea aceptada
+
+iptables -A INPUT -i lo -j ACCEPT //acepta como entrada todo lo que llegue por la interfaz lo
+
+iptables -A INPUT -s 192.168.22.143 -j ACCEPT //acepta todo el trafico que llega por la direccion ip origen: 192.168.22.143
+
+iptables -A INPUT -s 231.45.34.234 -p tcp --dport 3306 -j ACCEPT //acepta todo el trafico que llegue por la ip: 231.45.34.234 con el protocolo tcp y con puerto de destino 3306
+
+iptables -A INPUT -s 80.37.45.194 -p tcp --dport 20:21 -j ACCEPT //acepta todo el trafico proveniente de a ip: 80.37.45.194 con puertos destinos 20 o 21
+
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT //acepta todo trafico que utiliza el protocolo tcp con puerto destino 80
+
+iptables -A INPUT -p tcp --dport 1:1024 DROP //rechaza sin aviso a todo trafico que use el protocolo tcp y tenga como destino los puerto 1 al 1024
+
+iptables -A INPUT -p udp --dport 1:1024 DROP //rechaza sin aviso a todo trafico que use el protocolo udp y tenga como destino los puerto 1 al 1024
+
+iptables -A INPUT -p tcp --dport 3306 -j DROP //rechaza todo trafico con puerto destino 3306 a traves del protocolo tcp
+
+iptables -A INPUT -p tcp --dport 10000 DROP //rechaza todo trafico con puerto destino 10000 a traves del protocolo tcp
+
+iptables -A INPUT -p udp --dport 10000 DROP //rechaza todo trafico con puerto destino 10000 a traves del protocolo udp
+
+por lo tanto:
+
+Este script configura un servidor que:
+1- Es accesible públicamente (para todo el mundo) solo en el servicio Web (Puerto 80).+
+2- Tiene servicios privados (FTP y MySQL) que están ocultos para el mundo, excepto para dos direcciones IP específicas autorizadas.
+3- Confía plenamente en una IP local (192.168.22.143) para cualquier tipo de acceso.
+4- Protege los puertos bajos (1-1024) y el puerto de gestión (10000) bloqueando cualquier otro intento de conexión.
+
+
+CASO 2:
+
+
+iptables -F
+
+iptables -X
+
+iptables -Z
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 192.168.3.2:80
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j DNAT --to 192.168.3.2:443
+
+iptables -A INPUT -i lo -j ACCEPT
+
+iptables -A INPUT -i eth1 -s 192.168.10.0/24 -j ACCEPT
+
+iptables -t nat -A POSTROUTING -s 192.168.3.0/24 -o eth0 -j MASQUERADE
+
+iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -o eth0 -j MASQUERADE
+
+echo 1 > /proc/sys/bnet/ipv4/ip-forward
+
+iptables -A FORWARD -s 192.168.3.2 -p tcp --dport 3306 -d 192.168.10.3:3036 -j ACCEPT
+
+iptables -A FORWARD -s 192.168.10.5 -d 192.168.3.2 -p tcp --sport 3306 -j ACCEPT
+
+iptables -A FORWARD -s 192.168.10.0/24 -d 192.168.3.0/24 -p tpc --sport 3389 -j ACCEPT
+
+iptables -A FORWARD -s 192.168.3.0/24 -d 192.168.10.0/24 -j DROP
+
+iptables -A INPUT -i eth2 -s 192.168.3.0/24 -j DROP
+
+iptables -A INPUT -i eth0 -s 0.0.0.0 -p tcp --dport 1:1024 -j DROP
+
+iptables -A INPUT -i eth0 -s 0.0.0.0 -p udp --dport 1:1024 -j DROP
+
+iptables -A INPUT -p tcp --dport 10000 -j DROP
+
+iptables -A INPUT -p udp --dport 10000 -j DROP
+
+proxy encargado de gestionar la red, solo sobre navegacion.
+otra version de proxy, el proxy reverso, repartir trafico.
+
+firewall encargado de administrar el trafico que entra y sale de mi red
