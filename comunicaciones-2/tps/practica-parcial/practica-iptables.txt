@@ -1,0 +1,173 @@
+PARCIAL 2023 12/12
+EJERCICIO 4)
+a)
+
+iptables -F //elimina todas las reglas 
+iptables -X //elimina todas las cadenas que esten definidas
+iptables -Z //reinicia todos los contadores del firewall
+iptables -P INPUT DROP //politica por defecto para la cadena INPUT, dropear todos los paquetes 
+iptables -P OUTPUT DROP //politica por defecto para la cadena OUTPUT, dropear todos los paquetes 
+iptables -P FORWARD DROP //politica por defecto para la cadena FORWARD, dropear todos los paquetes 
+iptables -A INPUT -i eth0 -p tcp --dport 22 -j DROP //todo el trafico que entra por la interfaz eth0 mediante el protocolo tcp y cuyo puerto destino es 22 se dropea
+iptables -t nat -A PREROUTING -i eth1 -p tcp --dport 80 -j REDIRECT -to-port 3128
+
+b)
+
+crear un conjunto de iptables que limpien contadores, reglas y demas elementos, luego registre (loggin) y rechace trafico entrante de una aplicacion tcp sobre el puerto 955
+
+iptables -F
+iptables -X
+iptables -Z
+iptables -A INPUT -p tcp --dport 955 -j LOG
+iptables -A INPUT -p tcp --dport 955 -j DROP
+
+c) 
+
+A la hora de implementar criptografia simetrica no podemos garantizar una firma digital puesto que la clave con la que contamos es publica, por lo que cualquiera podria tener acceso, aunque no deberia ser asi. Es por esto que no podemos garantizar una consistencia en la informacion que queremos firmar digitalmente, puesto que los datos pueden ser accedidos por cualquiera que posea la clave publica permitiendo alterar la informacion si es que ve atacada/interceptada. Mientras que si se emplea una criptografia asimetrica contamos con 2 claves, la publica y la privada, donde esta ultima no se comparte ni deberia hacerse con nadie. Entonces para firmar primeramente generamos el hash de nuestro documento, luego firmamos (encriptamos) con nuestra clave privada y posteriormente, y no necesariamente, podemos mandar un manifesto con la clave publica nuestra, entonces terminamos enviando el documento original, el hash encriptado con nuestra clave publica y, opcional, el manifesto. Del otro lado cuando llega la informacion, se toma el hash encriptado y se lo decifra mediante la clave publica del emisor, luego se hashea el documento y se comprueba que los hash coincidan, logrando asi la validacion y consistenca de los datos y garantizando la no alteracion de los mismos.
+
+ejercicio consulta)
+
+Ejercicio: Publicar un MySQL usando iptables STRICT STATELESS
+
+Topología :
+
+WAN: 203.0.113.10 → eth0
+
+LAN: 192.168.0.1/24 → eth1
+
+MySQL interno: 192.168.0.100:3306
+
+Objetivo
+
+Configurar NAT + filter para que:
+
+Se publique MySQL a Internet usando DNAT lo que llegue a la ip publica en el puerto 3306 se derive al server interno
+Las respuestas del server mysql salgan a internet con  mi ip  publica  como origen
+Sólo se permita el tráfico necesario para esa conexión y las respuestas  estando el resto dropeado
+
+Como cambiaria si el mysql corre en el firewall?
+
+iptables -F
+iptables -X
+iptables -Z
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+iptables -t nat -P POSTROUTING ACCEPT
+iptables -t nat -P PREROUTING ACCEPT
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 3306 -j DNAT --to 192.168.0.100:3306
+iptables -t nat -A POSTROUTING -o eth0 -s 192.168.0.1/24 -sport 3306 -j SNAT 203.0.113.10
+iptables -A FORWARD -i eth0 -o eth1 -p tcp -d 192.168.0.100 --dport 3306 -j ACCEPT
+iptables -A FORWARD -i eth1 -o eth0 -p tcp -s 192.168.0.100 --sport 3306 -j ACCEPT
+
+si corriera dentro del firewall seria eliminar las de la cadena FORWARD y agregar:
+
+iptables -A INPUT -i eth0 -p tcp -dport 3306 -j ACCEPT
+iptables -A OUTPUT -i eth0 -p tcp -sport 3306 -j ACCEPT
+
+
+🛡️ Ejercicio 1: Publicación de Servidor Web en DMZ (Iptables Stateless)
+Escenario: Tienes un Firewall Linux con tres interfaces de red conectando tres zonas distintas:
+
+WAN (Internet): Interfaz eth0 con IP Pública 181.10.10.5.
+
+DMZ (Servidores): Interfaz eth1 con red 10.0.10.0/24.
+
+Hay un Servidor Web (HTTP) en la IP 10.0.10.50, puerto 80.
+
+LAN (Usuarios): Interfaz eth2 con red 192.168.1.0/24.
+
+Objetivos: Escribir un script de iptables Strict Stateless (sin usar state ESTABLISHED) que cumpla con lo siguiente:
+
+Política por defecto: Todo cerrado (DROP) en INPUT, OUTPUT y FORWARD.
+
+Publicar el Web Server: Cualquier petición que llegue desde Internet a la IP Pública (181.10.10.5) al puerto 80 debe ser redirigida al Servidor Web interno (10.0.10.50).
+
+Acceso desde la LAN: Los usuarios de la LAN (192.168.1.0/24) deben poder navegar por Internet (acceso a cualquier IP, puerto 80 y 443). Deben salir enmascarados con la IP Pública (NAT).
+
+Pista: Presta mucha atención a la cadena FORWARD. Tendrás tráfico que va "Internet -> DMZ" y tráfico que va "LAN -> Internet". Recuerda las respuestas (ida y vuelta).
+
+iptables -F
+iptables -X
+iptables -Z
+
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+iptables -t nat -P POSTROUTING ACCEPT
+iptables -t nat -P PREROUTING ACCEPT
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 10.0.10.50:80
+iptables -t nat -A POSTROUTING -o eth0 -s 192.168.1.0/24 -j SNAT --to 181.10.10.5
+
+iptables -A FORWARD -i eth0 -o eth1 -d 10.0.10.50 -p tcp --dport 80  -j ACCEPT
+iptables -A FORWARD -i eth1 -o eth0 -s 10.0.10.50 -p tcp --sport 80  -j ACCEPT
+iptables -A FORWARD -i eth2 -o eth0 -s 192.168.1.0/24 -dport 80 -p tcp -j ACCEPT
+iptables -A FORWARD -i eth2 -o eth0 -s 192.168.1.0/24 -dport 443 -p tcp -j ACCEPT
+iptables -A FORWARD -i eth0 -o eth2 -s 192.168.1.0/24 -sport 80 -p tcp -j ACCEPT
+iptables -A FORWARD -i eth0 -o eth2 -s 192.168.1.0/24 -sport 443 -p tcp -j ACCEPT
+
+Ejercicio 2: Acceso SSH Local al Firewall (Iptables)
+Escenario: Siguiendo con el mismo equipo del ejercicio anterior. Ahora tú eres el administrador y necesitas conectarte por SSH directamente al Firewall para configurarlo.
+
+Datos:
+
+El servicio SSH del firewall escucha en el puerto 2222 (no el 22 estándar).
+
+Tu PC de administrador está en la LAN con la IP 192.168.1.200.
+
+Objetivos: Escribir las reglas necesarias para:
+
+Permitir que SOLO tu PC (192.168.1.200) pueda conectarse al SSH del Firewall (192.168.1.1 es la IP del fw en la LAN).
+
+Bloquear cualquier intento de conexión a ese puerto desde cualquier otra IP.
+
+Pregunta teórica: ¿En qué cadena (CHAIN) debes poner estas reglas? ¿Por qué no en FORWARD?
+
+iptables -A INPUT -i eth2 -s 192.168.1.200 -p tcp --dport 2222 -j ACCEPT
+iptables -A OUTPUT -o eth2 -d 192.168.1.200 -p tcp -sport 2222 -j ACCEPT
+
+La regla la coloco en la cadena INPUT puesto que es un servicio que esta corriendo directamente en el firewall.
+
+
+
+
+
+🧠 Ejercicio 3: Troubleshooting de Ruteo y ARP
+Escenario: Tienes dos PCs conectadas al mismo Switch. No hay routers ni VLANs.
+
+PC A:
+
+IP: 192.168.1.10
+
+Máscara: 255.255.255.0
+
+Gateway: 192.168.1.1
+
+PC B:
+
+IP: 192.168.1.20
+
+Máscara: 255.255.255.128 (¡Ojo aquí!)
+
+Gateway: 192.168.1.1
+
+El Problema: La PC A intenta hacer ping a la PC B.
+
+¿El ping llega a la PC B? (Analiza el proceso de decisión de envío de A).
+
+¿La PC B puede responder el ping a la PC A? (Analiza el proceso de decisión de envío de B).
+
+¿Se establece la comunicación? Justifica usando el concepto de ARP y Máscara.
+
+🌐 Ejercicio 4: Análisis de Servicios (Teórico)
+Escenario: Un cliente DHCP acaba de obtener una IP y quiere entrar a www.google.com.
+
+Pregunta: Ordena cronológicamente los siguientes eventos (del 1 al 5) que ocurren en la red:
+
+(1) El cliente envía un DHCPREQUEST (Broadcast) para confirmar su IP. 
+(2) El cliente recibe un DHCPACK y configura su interfaz.
+(3) El cliente envía un paquete UDP al puerto 53 del servidor DNS solicitando la IP de www.google.com. 
+(4) El servidor DNS responde con la dirección IP 142.250.x.x. 
+(5) El navegador envía un segmento TCP con flag SYN al puerto 80/443 de la IP de Google. 
