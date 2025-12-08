@@ -1,0 +1,25 @@
+102;Archivo no encontrado;David;nicholas1.txt
+102;Archivo no encontrado;David;roger2.txt
+102;Archivo no encontrado;David;roger3.txt
+102;Archivo no encontrado;David;roger3.txt
+102;Archivo no encontrado;David;syd2.txt
+378;Formato inválido;David;nicholas2.txt
+378;Formato inválido;David;richard2.txt
+378;Formato inválido;David;syd1.txt
+378;Formato inválido;David;syd3.txt
+456;Permiso denegado;David;david1.txt
+456;Permiso denegado;David;david2.txt
+456;Permiso denegado;David;david3.txt
+456;Permiso denegado;David;nicholas2.txt
+456;Permiso denegado;David;roger3.txt
+456;Permiso denegado;David;syd3.txt
+741;Espacio insuficiente;David;david3.txt
+741;Espacio insuficiente;David;nicholas3.txt
+741;Espacio insuficiente;David;richard2.txt
+741;Espacio insuficiente;David;richard3.txt
+741;Espacio insuficiente;David;syd3.txt
+963;Conexión interrumpida;David;david1.txt
+963;Conexión interrumpida;David;richard1.txt
+963;Conexión interrumpida;David;richard2.txt
+963;Conexión interrumpida;David;richard3.txt
+963;Conexión interrumpida;David;syd3.txt

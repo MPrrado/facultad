@@ -1,0 +1,14 @@
+102;Archivo no encontrado;Syd;richard1.txt
+102;Archivo no encontrado;Syd;david3.txt
+102;Archivo no encontrado;Syd;syd1.txt
+378;Formato inválido;Syd;richard2.txt
+456;Permiso denegado;Syd;nicholas2.txt
+456;Permiso denegado;Syd;roger1.txt
+456;Permiso denegado;Syd;roger3.txt
+456;Permiso denegado;Syd;syd1.txt
+741;Espacio insuficiente;Syd;david2.txt
+741;Espacio insuficiente;Syd;richard2.txt
+741;Espacio insuficiente;Syd;roger1.txt
+963;Conexión interrumpida;Syd;david2.txt
+963;Conexión interrumpida;Syd;richard1.txt
+963;Conexión interrumpida;Syd;roger3.txt
